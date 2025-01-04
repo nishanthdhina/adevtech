@@ -38,89 +38,114 @@ function initializeMobileMenu() {
 // Call all initialization functions
 document.addEventListener('DOMContentLoaded', () => {
     initializeMobileMenu();
-    initializeAnimations();
-    initializeFeatureCards();
+    
+    // Check if we're on the home page (has feature cards)
+    if (document.querySelector('.feature-cards')) {
+        initializeAnimations();
+        initializeFeatureCards();
+    }
+    
+    // Initialize common components
     initializeFeatures();
     initializeSmoothScroll();
     initializeSectionNav();
+    
+    // Check if we're on the RecEzy page
+    if (document.querySelector('.recezy-hero')) {
+        initializeRecEzyAnimations();
+    }
+    
+    // Check if we're on a page with products
+    if (document.querySelector('.products-container')) {
+        initializeProducts();
+    }
+
+    // Trigger initial scroll check for section nav
+    window.dispatchEvent(new Event('scroll'));
 });
 
 function initializeAnimations() {
-    // Clear any existing animations
-    gsap.set('.card', {
-        clearProps: 'all'
-    });
+    // Check if we're on a page with cards
+    const cards = document.querySelectorAll('.card');
+    const connectors = document.querySelectorAll('.connector');
+    
+    if (cards.length > 0) {
+        // Clear any existing animations
+        gsap.set(cards, {
+            clearProps: 'all'
+        });
 
-    // Initial state
-    gsap.set('.card', {
-        y: 50,
-        opacity: 0
-    });
+        // Initial state
+        gsap.set(cards, {
+            y: 50,
+            opacity: 0
+        });
 
-    // Set initial state for connectors
-    gsap.set('.connector', {
-        scaleY: 0,
-        opacity: 0,
-        transformOrigin: 'top'
-    });
-
-    // Main animation timeline
-    const mainTl = gsap.timeline({
-        defaults: {
-            ease: 'power3.out'
+        // Set initial state for connectors
+        if (connectors.length > 0) {
+            gsap.set(connectors, {
+                scaleY: 0,
+                opacity: 0,
+                transformOrigin: 'top'
+            });
         }
-    });
 
-    // Animate cards and connectors in sequence
-    document.querySelectorAll('.card').forEach((card, index) => {
-        // Card animation
-        mainTl.to(card, {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            delay: index === 0 ? 0 : 0.2, // Shorter delay for smoother sequence
-            onComplete: () => {
-                // Start Lordicon animation when card appears
-                const icon = card.querySelector('lord-icon');
-                if (icon) {
-                    icon.trigger = "loop";
-                }
+        // Main animation timeline
+        const mainTl = gsap.timeline({
+            defaults: {
+                ease: 'power3.out'
             }
         });
 
-        // Connector animation (except after the last card)
-        if (index < document.querySelectorAll('.card').length - 1) {
-            mainTl.to(card.nextElementSibling, {
-                scaleY: 1,
+        // Animate cards and connectors in sequence
+        cards.forEach((card, index) => {
+            // Card animation
+            mainTl.to(card, {
+                y: 0,
                 opacity: 1,
-                duration: 0.5,
-                ease: 'power2.inOut'
-            }, '-=0.3'); // Overlap with card animation
-        }
-    });
+                duration: 1,
+                delay: index === 0 ? 0 : 0.2,
+                onComplete: () => {
+                    const icon = card.querySelector('lord-icon');
+                    if (icon) {
+                        icon.trigger = "loop";
+                    }
+                }
+            });
 
-    // Hover animations
-    document.querySelectorAll('.card').forEach(card => {
-        const hoverTl = gsap.timeline({ paused: true });
-        
-        hoverTl.to(card, {
-            scale: 1.02,
-            y: -5,
-            duration: 0.3,
-            boxShadow: '0 10px 20px rgba(172, 13, 26, 0.1)',
-            background: 'rgba(255, 255, 255, 0.08)'
+            // Connector animation (except after the last card)
+            if (index < cards.length - 1 && connectors[index]) {
+                mainTl.to(connectors[index], {
+                    scaleY: 1,
+                    opacity: 1,
+                    duration: 0.5,
+                    ease: 'power2.inOut'
+                }, '-=0.3');
+            }
         });
 
-        // Hover handlers
-        card.addEventListener('mouseenter', () => {
-            hoverTl.play();
-            createParticles(card);
-        });
+        // Hover animations
+        cards.forEach(card => {
+            const hoverTl = gsap.timeline({ paused: true });
+            
+            hoverTl.to(card, {
+                scale: 1.02,
+                y: -5,
+                duration: 0.3,
+                boxShadow: '0 10px 20px rgba(172, 13, 26, 0.1)',
+                background: 'rgba(255, 255, 255, 0.08)'
+            });
 
-        card.addEventListener('mouseleave', () => {
-            hoverTl.reverse();
+            card.addEventListener('mouseenter', () => {
+                hoverTl.play();
+                createParticles(card);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                hoverTl.reverse();
+            });
         });
-    });
+    }
 }
 
 function createParticles(card) {
@@ -456,18 +481,160 @@ function debounce(func, wait) {
     };
 }
 
-// Add the initialization code
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize main animations first
-    initializeAnimations();
-    
-    // Then initialize other components
-    initializeFeatureCards();
-    initializeFeatures();
-    initializeSectionNav();
-    initializeProducts();
-    initializeSmoothScroll();
+function initializeRecEzyAnimations() {
+    // Hero section animations
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+        const words = heroTitle.querySelectorAll('.text-dark');
+        gsap.set(words, { opacity: 0, y: 50 }); // Set initial state
+        gsap.to(words, {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out",
+            delay: 0.5 // Add delay for initial load
+        });
+    }
 
-    // Trigger initial scroll check for section nav
-    window.dispatchEvent(new Event('scroll'));
+    // Features section animations
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach((card, index) => {
+        gsap.set(card, { opacity: 0, y: 100 }); // Set initial state
+        ScrollTrigger.create({
+            trigger: card,
+            start: "top bottom-=150",
+            end: "top center",
+            toggleActions: "play none none reverse",
+            onEnter: () => {
+                gsap.to(card, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    delay: index * 0.2,
+                    ease: "power3.out"
+                });
+            }
+        });
+    });
+
+    // Meet Eko section animations
+    const ekoSection = document.querySelector('.meet-eko');
+    if (ekoSection) {
+        const ekoTitle = ekoSection.querySelector('.eko-intro h2');
+        const ekoDesc = ekoSection.querySelector('.eko-desc');
+        
+        // Set initial states
+        gsap.set([ekoTitle, ekoDesc], { opacity: 0, y: 50 });
+        
+        ScrollTrigger.create({
+            trigger: ekoSection,
+            start: "top bottom-=150",
+            end: "top center",
+            toggleActions: "play none none reverse",
+            onEnter: () => {
+                gsap.to(ekoTitle, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+                gsap.to(ekoDesc, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    delay: 0.2,
+                    ease: "power3.out"
+                });
+            }
+        });
+
+        // Eko feature cards animation
+        const ekoCards = document.querySelectorAll('.eko-feature-card');
+        ekoCards.forEach((card, index) => {
+            gsap.set(card, { opacity: 0, x: index === 0 ? -100 : 100 });
+            ScrollTrigger.create({
+                trigger: card,
+                start: "top bottom-=150",
+                end: "top center",
+                toggleActions: "play none none reverse",
+                onEnter: () => {
+                    gsap.to(card, {
+                        x: 0,
+                        opacity: 1,
+                        duration: 1,
+                        delay: 0.3,
+                        ease: "power3.out"
+                    });
+                }
+            });
+        });
+    }
+
+    // Dashboard section animations
+    const dashboardSection = document.querySelector('.dashboard');
+    if (dashboardSection) {
+        const dashboardImg = dashboardSection.querySelector('.dashboard-image img');
+        gsap.set(dashboardImg, { opacity: 0, y: 50, scale: 0.9 });
+        
+        ScrollTrigger.create({
+            trigger: dashboardImg,
+            start: "top bottom-=150",
+            end: "top center",
+            toggleActions: "play none none reverse",
+            onEnter: () => {
+                gsap.to(dashboardImg, {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: 1.2,
+                    ease: "power3.out"
+                });
+            }
+        });
+
+        // Notification cards animations
+        const leftNotifications = document.querySelectorAll('.dashboard-notifications.left .notification-card');
+        const rightNotifications = document.querySelectorAll('.dashboard-notifications.right .notification-card');
+
+        // Set initial states
+        gsap.set(leftNotifications, { opacity: 0, x: -100 });
+        gsap.set(rightNotifications, { opacity: 0, x: 100 });
+
+        // Animate notifications
+        [leftNotifications, rightNotifications].forEach((cards, isRight) => {
+            cards.forEach((card, index) => {
+                ScrollTrigger.create({
+                    trigger: card,
+                    start: "top bottom-=150",
+                    end: "top center",
+                    toggleActions: "play none none reverse",
+                    onEnter: () => {
+                        gsap.to(card, {
+                            x: 0,
+                            opacity: 1,
+                            duration: 1,
+                            delay: index * 0.2,
+                            ease: "power3.out"
+                        });
+                    }
+                });
+            });
+        });
+    }
+}
+
+// Update the initialization to ensure proper loading
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize mobile menu first
+    initializeMobileMenu();
+    
+    // Initialize page-specific animations
+    if (document.querySelector('.recezy-hero')) {
+        gsap.delayedCall(0.1, initializeRecEzyAnimations); // Slight delay to ensure DOM is ready
+    }
+    
+    // Initialize common components
+    initializeSmoothScroll();
+    initializeSectionNav();
 }); 
