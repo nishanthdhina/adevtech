@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdevTech - AI-Powered HR Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <nav class="section-nav">
+        <div class="nav-wrapper">
+            <div class="nav-item" data-section="home">
+                <div class="nav-indicator"></div>
+                <span class="nav-label">Home</span>
+            </div>
+            <div class="nav-item" data-section="why-choose-us">
+                <div class="nav-indicator"></div>
+                <span class="nav-label">Why Us</span>
+            </div>
+            <div class="nav-item" data-section="solutions">
+                <div class="nav-indicator"></div>
+                <span class="nav-label">Solutions</span>
+            </div>
+            <div class="nav-item" data-section="about">
+                <div class="nav-indicator"></div>
+                <span class="nav-label">About</span>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/adevtechlogo.png" alt="AdevTech Logo">
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="/" class="active">Home</a>
+                    <div class="nav-line"></div>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#solutions">Solutions</a>
+                    <div class="nav-line"></div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <a href="/recezy.html" class="dropdown-item">
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/weqkkuwt.json"
+                                    trigger="hover"
+                                    colors="primary:#ac0d1a,secondary:#c85c66"
+                                    style="width:32px;height:32px">
+                                </lord-icon>
+                                <div>
+                                    <h4>RecEzy</h4>
+                                    <p>Intelligent automation for modern recruitment</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-item">
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/fcyboqbm.json"
+                                    trigger="hover"
+                                    colors="primary:#ac0d1a,secondary:#c85c66"
+                                    style="width:32px;height:32px">
+                                </lord-icon>
+                                <div>
+                                    <h4>CompEzy</h4>
+                                    <p>Smart solutions for performance and compensation</p>
+                                </div>
+                            </div>
+                            <div class="dropdown-item">
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/cfoaotmk.json"
+                                    trigger="hover"
+                                    colors="primary:#ac0d1a,secondary:#c85c66"
+                                    style="width:32px;height:32px">
+                                </lord-icon>
+                                <div>
+                                    <h4>EvalEzy</h4>
+                                    <p>Streamlined employee evaluations with real-time feedback</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="/blog.html">Blog</a>
+                    <div class="nav-line"></div>
+                </li>
+                <li class="nav-item">
+                    <a href="/careers.html">Careers</a>
+                    <div class="nav-line"></div>
+                </li>
+                <li class="nav-item">
+                    <a href="/contact.html" class="contact-btn">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="container split-layout">
+            <div class="hero-content">
+                <h1>
+                    <span class="accent-text">Transform</span> Your HR with 
+                    <span class="accent-text">AI-Powered</span> Solutions
+                </h1>
+                <p>We deliver cutting-edge, SaaS-based HR products designed to simplify and streamline your human resources operations.</p>
+                <div class="cta-buttons">
+                    <a href="#why-choose-us" class="btn secondary scroll-to">Learn More</a>
+                </div>
+            </div>
+            <div class="animation-container">
+                <div class="feature-cards">
+                    <div class="card" data-feature="recruitment">
+                        <div class="card-inner">
+                            <div class="card-icon">
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/weqkkuwt.json"
+                                    trigger="loop"
+                                    colors="primary:#ac0d1a,secondary:#c85c66"
+                                    state="loop"
+                                    style="width:64px;height:64px">
+                                </lord-icon>
+                            </div>
+                            <div class="card-content">
+                                <h3>Smart Recruitment</h3>
+                                <p>AI-powered talent acquisition</p>
+                            </div>
+                        </div>
+                        <div class="card-particles"></div>
+                    </div>
+
+                    <div class="connector"></div>
+
+                    <div class="card" data-feature="analytics">
+                        <div class="card-inner">
+                            <div class="card-icon">
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/fcyboqbm.json"
+                                    trigger="loop"
+                                    colors="primary:#ac0d1a,secondary:#c85c66"
+                                    state="loop"
+                                    style="width:64px;height:64px">
+                                </lord-icon>
+                            </div>
+                            <div class="card-content">
+                                <h3>HR Analytics</h3>
+                                <p>Data-driven insights</p>
+                            </div>
+                        </div>
+                        <div class="card-particles"></div>
+                    </div>
+
+                    <div class="connector"></div>
+
+                    <div class="card" data-feature="management">
+                        <div class="card-inner">
+                            <div class="card-icon">
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/cfoaotmk.json"
+                                    trigger="loop"
+                                    colors="primary:#ac0d1a,secondary:#c85c66"
+                                    state="loop"
+                                    style="width:64px;height:64px">
+                                </lord-icon>
+                            </div>
+                            <div class="card-content">
+                                <h3>Team Management</h3>
+                                <p>Streamlined HR operations</p>
+                            </div>
+                        </div>
+                        <div class="card-particles"></div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="why-choose-us" class="why-choose-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Us</h2>
+                <p>Solutions that <span class="accent-text">Work</span></p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="icon-wrapper">
+                        <lord-icon
+                            src="https://cdn.lordicon.com/jdgfsfzr.json"
+                            trigger="hover"
+                            colors="primary:#ac0d1a,secondary:#c85c66"
+                            style="width:50px;height:50px">
+                        </lord-icon>
+                    </div>
+                    <h3>Expert Leadership</h3>
+                    <p>Our team combines technical prowess with deep industry experience, addressing real-world recruitment challenges effectively.</p>
+                    <div class="hover-effect"></div>
+                </div>
+
+                <div class="feature-box">
+                    <div class="icon-wrapper">
+                        <lord-icon
+                            src="https://cdn.lordicon.com/ncmnezgk.json"
+                            trigger="hover"
+                            colors="primary:#ac0d1a,secondary:#c85c66"
+                            style="width:50px;height:50px">
+                        </lord-icon>
+                    </div>
+                    <h3>Comprehensive Solutions</h3>
+                    <p>We provide end-to-end solutions, streamlining hiring, enhancing candidate experience, and optimizing recruitment strategies.</p>
+                    <div class="hover-effect"></div>
+                </div>
+
+                <div class="feature-box">
+                    <div class="icon-wrapper">
+                        <lord-icon
+                            src="https://cdn.lordicon.com/srupsmbe.json"
+                            trigger="hover"
+                            colors="primary:#ac0d1a,secondary:#c85c66"
+                            style="width:50px;height:50px">
+                        </lord-icon>
+                    </div>
+                    <h3>Innovative Technology</h3>
+                    <p>Our advanced software integrates seamlessly, simplifying tasks from sourcing candidates to managing offers.</p>
+                    <div class="hover-effect"></div>
+                </div>
+
+                <div class="feature-box">
+                    <div class="icon-wrapper">
+                        <lord-icon
+                            src="https://cdn.lordicon.com/dicvhxpz.json"
+                            trigger="hover"
+                            colors="primary:#ac0d1a,secondary:#c85c66"
+                            style="width:50px;height:50px">
+                        </lord-icon>
+                    </div>
+                    <h3>Industry Insight</h3>
+                    <p>With extensive recruitment knowledge, we anticipate trends and help you stay competitive in the market.</p>
+                    <div class="hover-effect"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="solutions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tailored Solutions for Every Challenge</h2>
+            </div>
+            
+            <div class="products-container">
+                <div class="product-card" data-product="recezy">
+                    <div class="card-content">
+                        <div class="product-icon">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/weqkkuwt.json"
+                                trigger="hover"
+                                colors="primary:#ac0d1a,secondary:#c85c66"
+                                style="width:80px;height:80px">
+                            </lord-icon>
+                        </div>
+                        <h3>RecEzy</h3>
+                        <p>AI-powered recruitment solutions for smarter hiring, automated workflows, and advanced candidate sourcing.</p>
+                        <a href="/recezy" class="learn-more">
+                            Learn More
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                    <div class="card-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                    </div>
+                    <div class="hover-overlay"></div>
+                </div>
+
+                <div class="product-card" data-product="compezy">
+                    <div class="card-content">
+                        <div class="product-icon">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/fcyboqbm.json"
+                                trigger="hover"
+                                colors="primary:#ac0d1a,secondary:#c85c66"
+                                style="width:80px;height:80px">
+                            </lord-icon>
+                        </div>
+                        <h3>CompEzy</h3>
+                        <p>Streamlined performance and compensation management with intelligent automation and real-time insights.</p>
+                        <a href="/compezy" class="learn-more">
+                            Learn More
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                    <div class="card-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                    </div>
+                    <div class="hover-overlay"></div>
+                </div>
+
+                <div class="product-card" data-product="evalezy">
+                    <div class="card-content">
+                        <div class="product-icon">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/cfoaotmk.json"
+                                trigger="hover"
+                                colors="primary:#ac0d1a,secondary:#c85c66"
+                                style="width:80px;height:80px">
+                            </lord-icon>
+                        </div>
+                        <h3>EvalEzy</h3>
+                        <p>Effortless employee evaluations with continuous feedback and data-driven insights for growth and improvement.</p>
+                        <a href="/evalezy" class="learn-more">
+                            Learn More
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                    <div class="card-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                    </div>
+                    <div class="hover-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Solve All Your HR Challenges with <span class="accent-text">AdevTech</span></h2>
+                    <div class="text-content">
+                        <p class="lead">We understand the complexities and challenges that organizations face in managing their workforce efficiently.</p>
+                        
+                        <div class="text-columns">
+                            <p>Our cutting-edge, SaaS-based HR products are designed to simplify your HR operations from recruitment to payroll. With automation, AI-driven tools, and seamless integration, we eliminate manual processes, reduce hiring costs, and improve employee management.</p>
+                            
+                            <p>Whether you're struggling with finding qualified talent, managing performance, or ensuring compliance, AdevTech's innovative solutions will transform your HR department into a powerhouse of efficiency and productivity. Let us handle the complexity so you can focus on what truly matters—growing your business.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/yrxnwkni.json"
+                        trigger="loop"
+                        colors="primary:#ac0d1a,secondary:#c85c66"
+                        style="width:300px;height:300px">
+                    </lord-icon>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="animations.js"></script>
+
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <img src="assets/adevtechlogo.png" alt="AdevTech Logo" class="footer-logo">
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/zzcjjxew.json"
+                                trigger="hover"
+                                colors="primary:#ffffff"
+                                style="width:24px;height:24px">
+                            </lord-icon>
+                            <p>Ekkaduthangal, Chennai, Tamil Nadu-600 038</p>
+                        </div>
+                        <div class="contact-item">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/tkgyrmwc.json"
+                                trigger="hover"
+                                colors="primary:#ffffff"
+                                style="width:24px;height:24px">
+                            </lord-icon>
+                            <a href="mailto:info@adevtechcorp.com">info@adevtechcorp.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/tftaqjwp.json"
+                                trigger="hover"
+                                colors="primary:#ffffff"
+                                style="width:24px;height:24px">
+                            </lord-icon>
+                            <a href="tel:+919884920482">+91 9884920482</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-links-grid">
+                    <div class="footer-links-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/blog.html">Blog</a></li>
+                            <li><a href="/careers.html">Careers</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Solutions</h4>
+                        <ul>
+                            <li><a href="/recezy.html">RecEzy</a></li>
+                            <li><a href="/compezy.html">CompEzy</a></li>
+                            <li><a href="/evalezy.html">EvalEzy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/adev-tech-corp" target="_blank">
+                            <lord-icon src="https://cdn.lordicon.com/qgebwute.json" trigger="hover" colors="primary:#ffffff" style="width:24px;height:24px"></lord-icon>
+                        </a>
+                        <a href="https://x.com/Smediaadevtech" target="_blank">
+                            <lord-icon src="https://cdn.lordicon.com/yizwahhw.json" trigger="hover" colors="primary:#ffffff" style="width:24px;height:24px"></lord-icon>
+                        </a>
+                        <a href="https://www.facebook.com/Adevtechcorp" target="_blank">
+                            <lord-icon src="https://cdn.lordicon.com/bfoumeno.json" trigger="hover" state="hover-draw" colors="primary:#ffffff" style="width:24px;height:24px"></lord-icon>
+                        </a>
+                        <a href="https://www.instagram.com/adevtechcorp/" target="_blank">
+                            <lord-icon src="https://cdn.lordicon.com/tgyvxauj.json" trigger="hover" colors="primary:#ffffff" style="width:24px;height:24px"></lord-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2024 AdevTech Corp. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

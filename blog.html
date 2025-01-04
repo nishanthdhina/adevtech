@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - AdevTech Corp</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="blog.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="assets/adevtechlogo.png" alt="AdevTech Logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="/">Home</a>
+                    <div class="nav-line"></div>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#solutions">Solutions</a>
+                    <div class="nav-line"></div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <a href="/recezy.html" class="dropdown-item">
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/weqkkuwt.json"
+                                    trigger="hover"
+                                    colors="primary:#ac0d1a,secondary:#c85c66"
+                                    style="width:32px;height:32px">
+                                </lord-icon>
+                                <div>
+                                    <h4>RecEzy</h4>
+                                    <p>Intelligent automation for modern recruitment</p>
+                                </div>
+                            </a>
+                            <!-- Other dropdown items -->
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="/blog.html" class="active">Blog</a>
+                    <div class="nav-line"></div>
+                </li>
+                <li class="nav-item">
+                    <a href="/careers.html">Careers</a>
+                    <div class="nav-line"></div>
+                </li>
+                <li class="nav-item">
+                    <a href="/contact.html" class="contact-btn">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Content -->
+    <section class="blog-content">
+        <div class="container">
+            <h1 class="blog-title">Latest Articles</h1>
+            
+            <div class="blog-grid">
+                <!-- Article 1 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="assets/blog1.png" alt="Merit Matrix Blog">
+                    </div>
+                    <div class="blog-card-content">
+                        <h2>Merit Matrix: Using Predictive analytics in building Compensation Programs</h2>
+                        <div class="blog-meta">
+                            <span class="author">Naveen Veda</span>
+                            <span class="date">December 16, 2024</span>
+                        </div>
+                        <h3>The Merit Matrix: Does It Still Hold Merit?</h3>
+                        <p class="excerpt">Merit matrix models come in different forms, but the core employee data—performance ratings, current salaries, and market pay ranges—remains the same. A typical "What-if" projection for compensation budgets is built on these inputs...</p>
+                        <a href="https://www.linkedin.com/pulse/merit-matrix-using-predictive-analytics-building-programs-naveen-veda-rxvwc/?trackingId=tQHyrJ9CRre2wcOCYVS6tA%3D%3D" target="_blank" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="assets/blog2.png" alt="LaserBeam Compass">
+                    </div>
+                    <div class="blog-card-content">
+                        <h2>LaserBeam Compass: Transforming Compensation Management</h2>
+                        <div class="blog-meta">
+                            <span class="author">Soniya S</span>
+                            <span class="date">November 18, 2024</span>
+                        </div>
+                        <p class="excerpt">LaserBeam Compass, a cutting-edge compensation platform, transforms the way organizations approach compensation planning and performance management. It addresses common challenges such as balancing competitive salaries, maintaining pay equity, and streamlining complex compensation processes...</p>
+                        <a href="Transform Your Compensation Strategy with LaserBeam Compass" target="_blank" class="read-more">Read More →</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Social Updates Section -->
+            <div class="social-updates">
+                <h2>Stay Updated</h2>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/company/adev-tech-corp" target="_blank" class="social-link">
+                        <lord-icon
+                            src="https://cdn.lordicon.com/qgebwute.json"
+                            trigger="hover"
+                            colors="primary:#ac0d1a,secondary:#c85c66"
+                            style="width:32px;height:32px">
+                        </lord-icon>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://x.com/Smediaadevtech" target="_blank" class="social-link">
+                        <lord-icon
+                            src="https://cdn.lordicon.com/yizwahhw.json"
+                            trigger="hover"
+                            colors="primary:#ac0d1a,secondary:#c85c66"
+                            style="width:32px;height:32px">
+                        </lord-icon>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="https://www.facebook.com/Adevtechcorp" target="_blank" class="social-link">
+                        <lord-icon
+                            src="https://cdn.lordicon.com/bfoumeno.json"
+                            trigger="hover"
+                            colors="primary:#ac0d1a,secondary:#c85c66"
+                            style="width:32px;height:32px">
+                        </lord-icon>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://www.instagram.com/adevtechcorp/" target="_blank" class="social-link">
+                        <lord-icon
+                            src="https://cdn.lordicon.com/tgyvxauj.json"
+                            trigger="hover"
+                            colors="primary:#ac0d1a,secondary:#c85c66"
+                            style="width:32px;height:32px">
+                        </lord-icon>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <img src="assets/adevtechlogo.png" alt="AdevTech Logo" class="footer-logo">
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/zzcjjxew.json"
+                                trigger="hover"
+                                colors="primary:#ffffff"
+                                style="width:24px;height:24px">
+                            </lord-icon>
+                            <p>Ekkaduthangal, Chennai, Tamil Nadu-600 038</p>
+                        </div>
+                        <div class="contact-item">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/tkgyrmwc.json"
+                                trigger="hover"
+                                colors="primary:#ffffff"
+                                style="width:24px;height:24px">
+                            </lord-icon>
+                            <a href="mailto:info@adevtechcorp.com">info@adevtechcorp.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/tftaqjwp.json"
+                                trigger="hover"
+                                colors="primary:#ffffff"
+                                style="width:24px;height:24px">
+                            </lord-icon>
+                            <a href="tel:+919884920482">+91 9884920482</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-links-grid">
+                    <div class="footer-links-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/blog.html" class="active">Blog</a></li>
+                            <li><a href="/careers.html">Careers</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Solutions</h4>
+                        <ul>
+                            <li><a href="/recezy.html">RecEzy</a></li>
+                            <li><a href="/compezy.html">CompEzy</a></li>
+                            <li><a href="/evalezy.html">EvalEzy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/adev-tech-corp" target="_blank">
+                            <lord-icon src="https://cdn.lordicon.com/qgebwute.json" trigger="hover" colors="primary:#ffffff" style="width:24px;height:24px"></lord-icon>
+                        </a>
+                        <a href="https://x.com/Smediaadevtech" target="_blank">
+                            <lord-icon src="https://cdn.lordicon.com/yizwahhw.json" trigger="hover" colors="primary:#ffffff" style="width:24px;height:24px"></lord-icon>
+                        </a>
+                        <a href="https://www.facebook.com/Adevtechcorp" target="_blank">
+                            <lord-icon src="https://cdn.lordicon.com/bfoumeno.json" trigger="hover" state="hover-draw" colors="primary:#ffffff" style="width:24px;height:24px"></lord-icon>
+                        </a>
+                        <a href="https://www.instagram.com/adevtechcorp/" target="_blank">
+                            <lord-icon src="https://cdn.lordicon.com/tgyvxauj.json" trigger="hover" colors="primary:#ffffff" style="width:24px;height:24px"></lord-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2024 AdevTech Corp. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
