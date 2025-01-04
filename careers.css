@@ -1,0 +1,218 @@
+/* Careers Page Styles */
+.careers-hero {
+    background: linear-gradient(135deg, #ac0d1a 0%, #8a0a15 100%);
+    padding: 120px 0 80px;
+    text-align: center;
+    color: white;
+}
+
+.careers-hero .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.careers-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.careers-hero .hero-subtitle {
+    font-size: 1.4rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.careers-content {
+    padding: 80px 0;
+    background: #f8f9ff;
+}
+
+.message-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.card-header {
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.card-header h2 {
+    font-size: 2.2rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.accent-line {
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.card-body {
+    padding: 2.5rem;
+    color: var(--text-light);
+}
+
+.card-body p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.expertise-areas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.expertise-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: #f8f9ff;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.expertise-item:hover {
+    transform: translateY(-5px);
+}
+
+.expertise-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(172, 13, 26, 0.1);
+    border-radius: 50%;
+}
+
+.expertise-icon i {
+    font-size: 28px;
+    color: var(--primary);
+}
+
+.expertise-item:hover .expertise-icon {
+    background: var(--primary);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.expertise-item:hover .expertise-icon i {
+    color: white;
+}
+
+.expertise-item span {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+}
+
+.future-note {
+    background: #f8f9ff;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.future-note h3 {
+    color: var(--text-dark);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.future-note p {
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+.social-connect {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.linkedin-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #0077b5;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.linkedin-button:hover {
+    background: #005885;
+    transform: translateY(-2px);
+}
+
+.linkedin-button i {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .careers-hero {
+        padding: 100px 0 60px;
+    }
+
+    .careers-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .careers-hero .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .card-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .expertise-areas {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .message-card {
+        margin: 0 1rem;
+    }
+
+    .card-header, .card-body {
+        padding: 1.5rem;
+    }
+}
+
+/* Remove conflicting navbar styles */
+.navbar .logo {
+    height: 32px;
+}
+
+.navbar .logo a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.navbar .logo img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+} 

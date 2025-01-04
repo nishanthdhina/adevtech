@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecEzy - AI-Powered Recruitment Solution | AdevTech</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="RecEzy by AdevTech is an AI-powered recruitment solution that automates hiring workflows, enhances candidate sourcing, and streamlines the entire recruitment process with intelligent automation.">
+    <meta name="keywords" content="RecEzy, AdevTech RecEzy, AI Recruitment, Automated Hiring, Recruitment Software, HR Technology, Candidate Sourcing">
+    <meta name="author" content="AdevTech">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="RecEzy - AI-Powered Recruitment Solution">
+    <meta property="og:description" content="Transform your recruitment process with RecEzy's intelligent automation, advanced analytics, and AI-powered candidate sourcing.">
+    <meta property="og:image" content="https://adevtechcorp.com/assets/recezy-logo.png">
+    <meta property="og:url" content="https://adevtechcorp.com/recezy.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RecEzy - AI-Powered Recruitment Solution">
+    <meta name="twitter:description" content="Transform your recruitment process with RecEzy's intelligent automation, advanced analytics, and AI-powered candidate sourcing.">
+    <meta name="twitter:image" content="https://adevtechcorp.com/assets/recezy-logo.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://adevtechcorp.com/recezy.html">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="recezy.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "RecEzy",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web-based",
+        "offers": {
+            "@type": "Offer",
+            "category": "HR Software"
+        },
+        "description": "An AI-powered recruitment solutions Software for smarter hiring, automated workflows, and advanced candidate sourcing.",
+        "featureList": [
+            "Advanced Analytics",
+            "AI-Powered Candidate Sourcing",
+            "Automated Workflow Management",
+            "Real-time Collaboration",
+            "Intelligent Screening"
+        ],
+        "creator": {
+            "@type": "Organization",
+            "name": "AdevTech",
+            "url": "https://adevtechcorp.com"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "150"
+        },
+        "siteNavigationElement": {
+            "@type": "SiteNavigationElement",
+            "name": "RecEzy Navigation",
+            "hasPart": [
+                {
+                    "@type": "WebPage",
+                    "name": "Overview",
+                    "url": "#hero"
+                },
+                {
+                    "@type": "WebPage",
+                    "name": "Features",
+                    "url": "#features"
+                },
+                {
+                    "@type": "WebPage",
+                    "name": "Meet Eko",
+                    "url": "#meet-eko"
+                },
+                {
+                    "@type": "WebPage",
+                    "name": "Dashboard",
+                    "url": "#dashboard"
+                }
+            ]
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Same navbar as main page -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/adevtechlogo.png" alt="AdevTech Logo">
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="/" class="active">Home</a>
+                    <div class="nav-line"></div>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#solutions">Solutions</a>
+                    <div class="nav-line"></div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <a href="/recezy.html" class="dropdown-item">
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/weqkkuwt.json"
+                                    trigger="hover"
+                                    colors="primary:#ac0d1a,secondary:#c85c66"
+                                    style="width:32px;height:32px">
+                                </lord-icon>
+                                <div>
+                                    <h4>RecEzy</h4>
+                                    <p>Intelligent automation for modern recruitment</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-item">
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/fcyboqbm.json"
+                                    trigger="hover"
+                                    colors="primary:#ac0d1a,secondary:#c85c66"
+                                    style="width:32px;height:32px">
+                                </lord-icon>
+                                <div>
+                                    <h4>CompEzy</h4>
+                                    <p>Smart solutions for performance and compensation</p>
+                                </div>
+                            </div>
+                            <div class="dropdown-item">
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/cfoaotmk.json"
+                                    trigger="hover"
+                                    colors="primary:#ac0d1a,secondary:#c85c66"
+                                    style="width:32px;height:32px">
+                                </lord-icon>
+                                <div>
+                                    <h4>EvalEzy</h4>
+                                    <p>Streamlined employee evaluations with real-time feedback</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="/blog.html">Blog</a>
+                    <div class="nav-line"></div>
+                </li>
+                <li class="nav-item">
+                    <a href="/careers.html">Careers</a>
+                    <div class="nav-line"></div>
+                </li>
+                <li class="nav-item">
+                    <a href="/contact.html" class="contact-btn">Contact</a>
+                </li>
+            </ul>
+            <button class="mobile-menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-nav">
+        <div class="mobile-nav-links">
+            <div class="mobile-nav-item">
+                <a href="/">Home</a>
+            </div>
+            <div class="mobile-nav-item has-dropdown">
+                <a href="#solutions">Solutions</a>
+                <div class="mobile-dropdown">
+                    <a href="/recezy.html">
+                        <h4>RecEzy</h4>
+                        <p>Intelligent automation for modern recruitment</p>
+                    </a>
+                    <a href="#">
+                        <h4>CompEzy</h4>
+                        <p>Smart solutions for performance and compensation</p>
+                    </a>
+                    <a href="#">
+                        <h4>EvalEzy</h4>
+                        <p>Streamlined employee evaluations with real-time feedback</p>
+                    </a>
+                </div>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="/blog.html">Blog</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="/careers.html">Careers</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="/contact.html">Contact</a>
+            </div>
+        </div>
+        <div class="mobile-social">
+            <h4>Follow Us</h4>
+            <div class="mobile-social-links">
+                <a href="https://www.linkedin.com/company/adev-tech-corp" target="_blank" class="mobile-social-link linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://x.com/Smediaadevtech" target="_blank" class="mobile-social-link twitter">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://www.facebook.com/Adevtechcorp" target="_blank" class="mobile-social-link facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/adevtechcorp/" target="_blank" class="mobile-social-link instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="section-nav">
+        <div class="nav-wrapper">
+            <div class="nav-item" data-section="hero">
+                <div class="nav-indicator"></div>
+                <span class="nav-label">Overview</span>
+            </div>
+            <div class="nav-item" data-section="features">
+                <div class="nav-indicator"></div>
+                <span class="nav-label">Features</span>
+            </div>
+            <div class="nav-item" data-section="meet-eko">
+                <div class="nav-indicator"></div>
+                <span class="nav-label">Meet Eko</span>
+            </div>
+            <div class="nav-item" data-section="dashboard">
+                <div class="nav-indicator"></div>
+                <span class="nav-label">Dashboard</span>
+            </div>
+        </div>
+    </nav>
+
+    <header id="hero" class="recezy-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="text-dark">Revolutionizing</span>
+                        <span class="text-dark">Recruitment</span>
+                        <span class="text-dark">with</span>
+                        <span class="text-dark">Intelligent</span>
+                        <span class="text-dark">Automation</span>
+                    </h1>
+                    <p class="hero-desc">An AI-powered recruitment solutions Software for smarter hiring, automated workflows, and advanced candidate sourcing.</p>
+                    <div class="cta-buttons">
+                        <a href="#features" class="btn primary">View Features</a>
+                        <a href="https://www.recezy.ai/" target="_blank" class="btn outline">Visit Website</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Features</h2>
+                <p>Everything you need for <span class="accent-text">modern recruitment</span></p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="assets/AA.png" alt="Advanced Analytics">
+                    </div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Unlock superior results with RecEzy's enhanced sourcing capabilities. Build and track a robust pipeline of top candidates who can elevate your business to new heights.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="assets/JPI.png" alt="Job Platform Integrations">
+                    </div>
+                    <h3>Job Platform Integrations</h3>
+                    <p>Effortlessly post jobs from within the platform to your preferred job boards, including LinkedIn, Indeed, Naukri, Kalibrr, and over & more.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="assets/DSC.png" alt="Diverse Sourcing Channels">
+                    </div>
+                    <h3>Diverse Sourcing Channel</h3>
+                    <p>Activate various recruitment channels, including specialized external recruiter portals, ready-made career pages, employee referrals, internal job postings, and career page APIs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="meet-eko" class="meet-eko">
+        <div class="container">
+            <div class="meet-eko-content">
+                <div class="eko-intro">
+                    <h2>Meet Eko</h2>
+                    <p class="eko-desc">Eko, our AI-enabled bot, is transforming the recruitment process to be simpler, faster, and more efficient</p>
+                </div>
+                
+                <div class="eko-features">
+                    <div class="eko-feature-card">
+                        <div class="eko-icon">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/wjyqkiew.json"
+                                trigger="hover"
+                                colors="primary:#7889FE,secondary:#7A87FE"
+                                style="width:64px;height:64px">
+                            </lord-icon>
+                        </div>
+                        <div class="eko-feature-content">
+                            <h3>AI-Powered Candidate Matching</h3>
+                            <p>Eko intelligently analyzes resumes and job descriptions to match the best candidates to your roles based on skills, experience, and qualifications.</p>
+                        </div>
+                    </div>
+
+                    <div class="eko-feature-card">
+                        <div class="eko-icon">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/sjoccsdj.json"
+                                trigger="hover"
+                                colors="primary:#7889FE,secondary:#7A87FE"
+                                style="width:64px;height:64px">
+                            </lord-icon>
+                        </div>
+                        <div class="eko-feature-content">
+                            <h3>Automated Resume Screening</h3>
+                            <p>Quickly filters through large volumes of resumes, saving recruiters time and highlighting the most qualified candidates.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dashboard" class="dashboard">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simplified Dashboard</h2>
+                <p>Everything you need in one place</p>
+            </div>
+            
+            <div class="dashboard-wrapper">
+                <div class="dashboard-notifications left">
+                    <div class="notification-card">
+                        <div class="notification-icon">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/zhiiqoue.json"
+                                trigger="hover"
+                                colors="primary:#7889FE,secondary:#7A87FE"
+                                style="width:48px;height:48px">
+                            </lord-icon>
+                        </div>
+                        <div class="notification-content">
+                            <h4>Task Assignment</h4>
+                            <p>Easily assign and track recruitment tasks</p>
+                        </div>
+                    </div>
+                    <div class="notification-card">
+                        <div class="notification-icon">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/vttzorhw.json"
+                                trigger="hover"
+                                colors="primary:#7889FE,secondary:#7A87FE"
+                                style="width:48px;height:48px">
+                            </lord-icon>
+                        </div>
+                        <div class="notification-content">
+                            <h4>Track Progress</h4>
+                            <p>Monitor recruitment pipeline in real-time</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-image">
+                    <img src="assets/recezydb.png" alt="RecEzy Dashboard">
+                </div>
+                
+                <div class="dashboard-notifications right">
+                    <div class="notification-card">
+                        <div class="notification-icon">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/fcyboqbm.json"
+                                trigger="hover"
+                                colors="primary:#7889FE,secondary:#7A87FE"
+                                style="width:48px;height:48px">
+                            </lord-icon>
+                        </div>
+                        <div class="notification-content">
+                            <h4>Analytics Overview</h4>
+                            <p>Get insights into your recruitment metrics</p>
+                        </div>
+                    </div>
+                    <div class="notification-card">
+                        <div class="notification-icon">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/jdgfsfzr.json"
+                                trigger="hover"
+                                colors="primary:#7889FE,secondary:#7A87FE"
+                                style="width:48px;height:48px">
+                            </lord-icon>
+                        </div>
+                        <div class="notification-content">
+                            <h4>Team Management</h4>
+                            <p>Collaborate with your recruitment team</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Same footer as main page -->
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <img src="assets/adevtechlogo.png" alt="AdevTech Logo" class="footer-logo">
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/zzcjjxew.json"
+                                trigger="hover"
+                                colors="primary:#ffffff"
+                                style="width:24px;height:24px">
+                            </lord-icon>
+                            <p>Ekkaduthangal, Chennai, Tamil Nadu-600 038</p>
+                        </div>
+                        <div class="contact-item">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/tkgyrmwc.json"
+                                trigger="hover"
+                                colors="primary:#ffffff"
+                                style="width:24px;height:24px">
+                            </lord-icon>
+                            <a href="mailto:info@adevtechcorp.com">info@adevtechcorp.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/tftaqjwp.json"
+                                trigger="hover"
+                                colors="primary:#ffffff"
+                                style="width:24px;height:24px">
+                            </lord-icon>
+                            <a href="tel:+919884920482">+91 9884920482</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-links-grid">
+                    <div class="footer-links-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/blog.html">Blog</a></li>
+                            <li><a href="/careers.html">Careers</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Solutions</h4>
+                        <ul>
+                            <li><a href="/recezy" class="active">RecEzy</a></li>
+                            <li><a href="/compezy">CompEzy</a></li>
+                            <li><a href="/evalezy">EvalEzy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/adev-tech-corp" target="_blank">
+                            <lord-icon src="https://cdn.lordicon.com/qgebwute.json" trigger="hover" colors="primary:#ffffff" style="width:24px;height:24px"></lord-icon>
+                        </a>
+                        <a href="https://x.com/Smediaadevtech" target="_blank">
+                            <lord-icon src="https://cdn.lordicon.com/yizwahhw.json" trigger="hover" colors="primary:#ffffff" style="width:24px;height:24px"></lord-icon>
+                        </a>
+                        <a href="https://www.facebook.com/Adevtechcorp" target="_blank">
+                            <lord-icon src="https://cdn.lordicon.com/bfoumeno.json" trigger="hover" state="hover-draw" colors="primary:#ffffff" style="width:24px;height:24px"></lord-icon>
+                        </a>
+                        <a href="https://www.instagram.com/adevtechcorp/" target="_blank">
+                            <lord-icon src="https://cdn.lordicon.com/tgyvxauj.json" trigger="hover" colors="primary:#ffffff" style="width:24px;height:24px"></lord-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2024 AdevTech. All rights reserved. <span style="opacity: 0.6; font-size: 0.8rem;"><a href="https://provocis.com" target="_blank" style="color: inherit; text-decoration: none;">Website Developed by Provocis </a></span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    <script src="animations.js"></script>
+</body>
+</html> 
