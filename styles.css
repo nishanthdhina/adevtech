@@ -195,13 +195,17 @@ body {
 /* Hero Section Styles */
 .hero {
     min-height: 100vh;
-    padding: 120px 0 60px;
+    padding: 180px 0 120px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
 .hero-content {
+    text-align: left;
     padding-right: 2rem;
+    margin-top: -60px;
 }
 
 .hero h1 {
@@ -297,6 +301,7 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
+    min-height: calc(100vh - 300px);
 }
 
 .hero-content {
@@ -306,8 +311,7 @@ body {
 
 .animation-container {
     position: relative;
-    min-height: 500px;
-    max-height: 550px;
+    height: 600px;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 24px;
     padding: 2rem;
@@ -315,31 +319,170 @@ body {
         0 20px 40px rgba(0, 0, 0, 0.05),
         0 1px 3px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
-@media (max-width: 992px) {
+.feature-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 420px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 1rem;
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
     .animation-container {
-        min-height: 600px;
-        max-height: 650px;
+        height: 600px;
+    }
+    
+    .feature-cards {
+        max-width: 420px;
+        gap: 1.5rem;
+    }
+}
+
+/* Medium-large screens */
+@media (max-width: 1199px) {
+    .animation-container {
+        height: 580px;
+    }
+    
+    .feature-cards {
+        max-width: 400px;
+        gap: 1.4rem;
+    }
+}
+
+/* Medium screens */
+@media (max-width: 992px) {
+    .split-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 0 1.5rem;
+    }
+
+    .hero-content {
+        text-align: center;
+        padding-right: 0;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .animation-container {
+        height: 560px;
+        width: 100%;
+        min-width: 500px;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    .feature-cards {
+        width: 90%;
+        max-width: 420px;
+        gap: 1.25rem;
+        padding: 0;
+    }
+
+    .card {
+        padding: 1.25rem;
+        width: 100%;
+    }
+
+    .card-inner {
+        gap: 1.5rem;
+    }
+}
+
+/* Medium-small screens */
+@media (max-width: 768px) {
+    .split-layout {
+        padding: 0 1rem;
+    }
+
+    .animation-container {
+        height: 540px;
+        min-width: unset;
         max-width: 500px;
+        width: calc(100% - 2rem);
+        margin: 0 auto;
+        padding: 1.25rem;
+    }
+
+    .feature-cards {
+        width: 100%;
+        max-width: 340px;
+        gap: 1.1rem;
+    }
+
+    .card {
+        padding: 1.1rem;
+    }
+
+    .card-inner {
+        gap: 1.25rem;
+    }
+}
+
+/* Small screens */
+@media (max-width: 576px) {
+    .animation-container {
+        height: 520px;
+        padding: 1rem;
+        width: calc(100% - 1rem);
         margin: 0 auto;
     }
-}
 
-@media (max-width: 768px) {
-    .animation-container {
-        min-height: 650px;
-        max-height: 700px;
-        max-width: 100%;
-        margin: 0 1rem;
+    .feature-cards {
+        max-width: 320px;
+        gap: 1rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .card-inner {
+        gap: 1rem;
     }
 }
 
+/* Extra small screens */
 @media (max-width: 480px) {
     .animation-container {
-        min-height: 700px;
-        max-height: 750px;
-        padding: 1.5rem;
+        height: 500px;
+        padding: 0.75rem;
+    }
+
+    .feature-cards {
+        max-width: 300px;
+        gap: 0.875rem;
+    }
+
+    .card-icon {
+        transform: scale(0.8);
+    }
+
+    .card-content h3 {
+        font-size: 1rem;
+    }
+
+    .card-content p {
+        font-size: 0.85rem;
+        line-height: 1.4;
     }
 }
 
@@ -380,9 +523,15 @@ body {
 .feature-cards {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.5rem;
     max-width: 420px;
     margin: 0 auto;
+    padding: 0 1rem;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .card {
@@ -395,6 +544,7 @@ body {
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    width: 100%;
 }
 
 .card::before {
