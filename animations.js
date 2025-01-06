@@ -1,7 +1,196 @@
 // Initialize GSAP and plugins
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, MotionPathPlugin);
 
-// Mobile Menu Toggle Functionality
+// Animation state management
+const AnimationState = {
+    isAnimating: false,
+    activeTimelines: new Set(),
+    scrollTimeout: null,
+    isScrolling: false,
+    lastScrollTime: 0,
+    killAllTimelines() {
+        this.activeTimelines.forEach(timeline => {
+            if (timeline && timeline.isActive()) {
+                timeline.kill();
+            }
+        });
+        this.activeTimelines.clear();
+        this.isAnimating = false;
+    },
+    resetState() {
+        this.isAnimating = false;
+        this.killAllTimelines();
+        ScrollTrigger.refresh();
+    }
+};
+
+// Throttle function for performance
+function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
+
+// Improved debounce function with immediate option
+function debounce(func, wait, immediate = false) {
+    let timeout;
+    return function executedFunction(...args) {
+        const context = this;
+        const later = () => {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+}
+
+// Scroll handler with improved performance
+const handleScroll = throttle(() => {
+    if (!AnimationState.isScrolling) {
+        AnimationState.isScrolling = true;
+        AnimationState.lastScrollTime = Date.now();
+    }
+
+    // Clear previous timeout
+    if (AnimationState.scrollTimeout) {
+        clearTimeout(AnimationState.scrollTimeout);
+    }
+
+    // Set new timeout
+    AnimationState.scrollTimeout = setTimeout(() => {
+        const timeSinceLastScroll = Date.now() - AnimationState.lastScrollTime;
+        if (timeSinceLastScroll > 150) {
+            AnimationState.isScrolling = false;
+            if (AnimationState.isAnimating) {
+                AnimationState.resetState();
+            }
+            updateActiveSection();
+        }
+    }, 150);
+}, 100);
+
+// Initialize animations with improved stability
+function initializeAnimations() {
+    const cards = document.querySelectorAll('.card');
+    const connectors = document.querySelectorAll('.connector');
+    
+    if (cards.length === 0) return;
+
+    // Kill any existing animations
+    gsap.killTweensOf([cards, connectors]);
+    AnimationState.resetState();
+
+    // Set initial states
+    gsap.set(cards, {
+        y: 30,
+        opacity: 0,
+        visibility: 'visible'
+    });
+
+    gsap.set(connectors, {
+        scaleY: 0,
+        opacity: 0,
+        transformOrigin: 'top center',
+        visibility: 'visible'
+    });
+
+    // Create main timeline
+    const mainTl = gsap.timeline({
+        defaults: { ease: 'power2.out' },
+        onComplete: () => AnimationState.resetState()
+    });
+
+    // Add initial delay
+    mainTl.set({}, {}, "+=0.5");
+
+    // Animate each card and its connector sequentially
+    cards.forEach((card, index) => {
+        // Card entrance animation
+        mainTl
+            .to(card, {
+                y: 0,
+                opacity: 1,
+                duration: 1.5,
+                onStart: () => {
+                    card.style.visibility = 'visible';
+                },
+                onComplete: () => {
+                    const icon = card.querySelector('lord-icon');
+                    if (icon) {
+                        icon.trigger = "loop";
+                        icon.state = "loop";
+                    }
+                }
+            })
+            // Add pause after card appears
+            .set({}, {}, "+=0.3");
+
+        // Animate connector after card (if not the last card)
+        if (index < cards.length - 1 && connectors[index]) {
+            mainTl
+                .set(connectors[index], {
+                    opacity: 1,
+                    scaleY: 0,
+                    transformOrigin: 'top'
+                })
+                .to(connectors[index], {
+                    scaleY: 1,
+                    duration: 0.8,
+                    ease: 'power1.inOut'
+                })
+                // Add pause after connector appears
+                .set({}, {}, "+=0.4");
+        }
+    });
+
+    // Disable pointer events during animation
+    cards.forEach(card => {
+        card.style.pointerEvents = 'none';
+    });
+}
+
+// Call all initialization functions with improved error handling
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        initializeMobileMenu();
+        
+        if (document.querySelector('.feature-cards')) {
+            initializeAnimations();
+            initializeFeatureCards();
+        }
+        
+        initializeFeatures();
+        initializeSmoothScroll();
+        initializeSectionNav();
+        
+        if (document.querySelector('.recezy-hero')) {
+            initializeRecEzyAnimations();
+        }
+        
+        if (document.querySelector('.products-container')) {
+            initializeProducts();
+        }
+
+        // Add improved scroll listener
+        window.removeEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        // Trigger initial scroll check
+        window.dispatchEvent(new Event('scroll'));
+    } catch (error) {
+        console.error('Error initializing animations:', error);
+        AnimationState.resetState();
+    }
+});
+
 function initializeMobileMenu() {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const mobileNav = document.querySelector('.mobile-nav');
@@ -32,146 +221,6 @@ function initializeMobileMenu() {
                 dropdown.classList.toggle('active');
             });
         });
-    }
-}
-
-// Call all initialization functions
-document.addEventListener('DOMContentLoaded', () => {
-    initializeMobileMenu();
-    
-    // Check if we're on the home page (has feature cards)
-    if (document.querySelector('.feature-cards')) {
-        initializeAnimations();
-        initializeFeatureCards();
-    }
-    
-    // Initialize common components
-    initializeFeatures();
-    initializeSmoothScroll();
-    initializeSectionNav();
-    
-    // Check if we're on the RecEzy page
-    if (document.querySelector('.recezy-hero')) {
-        initializeRecEzyAnimations();
-    }
-    
-    // Check if we're on a page with products
-    if (document.querySelector('.products-container')) {
-        initializeProducts();
-    }
-
-    // Trigger initial scroll check for section nav
-    window.dispatchEvent(new Event('scroll'));
-});
-
-function initializeAnimations() {
-    // Check if we're on a page with cards
-    const cards = document.querySelectorAll('.card');
-    const connectors = document.querySelectorAll('.connector');
-    
-    if (cards.length > 0) {
-        // Clear any existing animations
-        gsap.set(cards, {
-            clearProps: 'all'
-        });
-
-        // Initial state
-        gsap.set(cards, {
-            y: 50,
-            opacity: 0
-        });
-
-        // Set initial state for connectors
-        if (connectors.length > 0) {
-            gsap.set(connectors, {
-                scaleY: 0,
-                opacity: 0,
-                transformOrigin: 'top'
-            });
-        }
-
-        // Main animation timeline
-        const mainTl = gsap.timeline({
-            defaults: {
-                ease: 'power3.out'
-            }
-        });
-
-        // Animate cards and connectors in sequence
-        cards.forEach((card, index) => {
-            // Card animation
-            mainTl.to(card, {
-                y: 0,
-                opacity: 1,
-                duration: 1,
-                delay: index === 0 ? 0 : 0.2,
-                onComplete: () => {
-                    const icon = card.querySelector('lord-icon');
-                    if (icon) {
-                        icon.trigger = "loop";
-                    }
-                }
-            });
-
-            // Connector animation (except after the last card)
-            if (index < cards.length - 1 && connectors[index]) {
-                mainTl.to(connectors[index], {
-                    scaleY: 1,
-                    opacity: 1,
-                    duration: 0.5,
-                    ease: 'power2.inOut'
-                }, '-=0.3');
-            }
-        });
-
-        // Hover animations
-        cards.forEach(card => {
-            const hoverTl = gsap.timeline({ paused: true });
-            
-            hoverTl.to(card, {
-                scale: 1.02,
-                y: -5,
-                duration: 0.3,
-                boxShadow: '0 10px 20px rgba(172, 13, 26, 0.1)',
-                background: 'rgba(255, 255, 255, 0.08)'
-            });
-
-            card.addEventListener('mouseenter', () => {
-                hoverTl.play();
-                createParticles(card);
-            });
-
-            card.addEventListener('mouseleave', () => {
-                hoverTl.reverse();
-            });
-        });
-    }
-}
-
-function createParticles(card) {
-    const particleContainer = card.querySelector('.card-particles');
-    for (let i = 0; i < 8; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particleContainer.appendChild(particle);
-
-        gsap.fromTo(particle,
-            {
-                x: gsap.utils.random(0, card.offsetWidth),
-                y: gsap.utils.random(0, card.offsetHeight),
-                scale: 0,
-                opacity: 1
-            },
-            {
-                duration: gsap.utils.random(1, 2),
-                x: `+=${gsap.utils.random(-50, 50)}`,
-                y: `+=${gsap.utils.random(-50, 50)}`,
-                scale: gsap.utils.random(0.5, 1.5),
-                opacity: 0,
-                ease: 'power2.out',
-                onComplete: () => particle.remove()
-            }
-        );
     }
 }
 
@@ -330,7 +379,12 @@ function updateActiveSection() {
 }
 
 // Reinitialize on window resize
-window.addEventListener('resize', debounce(initializeAnimations, 250));
+window.addEventListener('resize', () => {
+    const reinitTimeout = setTimeout(() => {
+        initializeAnimations();
+        clearTimeout(reinitTimeout);
+    }, 100);
+});
 
 // Scroll indicator
 window.addEventListener('scroll', () => {
@@ -467,18 +521,6 @@ function initializeProducts() {
             });
         });
     });
-}
-
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
 }
 
 function initializeRecEzyAnimations() {
