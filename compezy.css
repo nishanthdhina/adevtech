@@ -150,6 +150,12 @@
     margin-top: 2rem;
 }
 
+@media (min-width: 992px) {
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 .feature-card {
     background: white;
     padding: 2rem;
@@ -180,9 +186,13 @@
     margin-bottom: 1.5rem;
 }
 
-.feature-icon lord-icon {
+.feature-icon lord-icon,
+.feature-icon i {
     width: 64px !important;
     height: 64px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .feature-card h3 {
