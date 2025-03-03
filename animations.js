@@ -1,5 +1,5 @@
 // Initialize GSAP and plugins
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, MotionPathPlugin);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 // Animation state management
 const AnimationState = {
