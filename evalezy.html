@@ -22,12 +22,7 @@
     
     <title>EvalEzy - Advanced Employee Evaluation Software | AdevTech</title>
     
-    <!-- Load GSAP first -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
-    
+    <!-- Load CSS first -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="evalezy.css">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
@@ -35,6 +30,12 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
     <link rel="manifest" href="assets/favicon_io/site.webmanifest">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Load GSAP before our scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     
     <script type="application/ld+json">
@@ -90,20 +91,6 @@
         }
     }
     </script>
-    
-    <style>
-        /* Ensure features and plans are visible */
-        #features, #plans, .demo-section {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-        
-        .feature-card, .plan-card, .demo-content {
-            opacity: 1 !important;
-            transform: none !important;
-        }
-    </style>
 </head>
 <body>
     <!-- Same navbar as main page -->
@@ -549,8 +536,8 @@
     </footer>
 
     <!-- Load our scripts after the DOM is ready -->
-    <script src="animations.js"></script>
     <script src="evalezy.js"></script>
+    <script src="animations.js"></script>
     <script src="menu.js"></script>
 </body>
 </html> 

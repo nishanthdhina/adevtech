@@ -1,210 +1,257 @@
+// EvalEzy JavaScript - Animations and Interactions
 document.addEventListener('DOMContentLoaded', () => {
-    // Make sure all elements are visible first
-    ensureElementsVisible();
+    console.log('EvalEzy JS loaded');
     
-    // Initialize animations and navigation
+    // Check if GSAP is loaded
+    if (typeof gsap === 'undefined') {
+        console.error('GSAP is not loaded. Animations will not work.');
+        // Make sure elements are visible even without animations
+        ensureElementsVisible();
+        return;
+    }
+    
+    // Register plugins if available
+    if (gsap.registerPlugin) {
+        if (typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+            console.log('ScrollTrigger registered');
+        } else {
+            console.warn('ScrollTrigger plugin not available');
+        }
+        
+        if (typeof ScrollToPlugin !== 'undefined') {
+            gsap.registerPlugin(ScrollToPlugin);
+            console.log('ScrollToPlugin registered');
+        }
+    }
+    
+    // Initialize animations and section navigation
     initAnimations();
     initSectionNav();
     
-    // Add hover effects to feature cards
+    // Add hover effects for feature cards
     const featureCards = document.querySelectorAll('.feature-card');
     featureCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
             gsap.to(card, {
-                y: -5,
-                boxShadow: '0 15px 30px rgba(172, 13, 26, 0.2)',
-                duration: 0.3
+                y: -10,
+                duration: 0.3,
+                ease: 'power2.out',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)'
             });
         });
         
         card.addEventListener('mouseleave', () => {
             gsap.to(card, {
                 y: 0,
-                boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
-                duration: 0.3
+                duration: 0.3,
+                ease: 'power2.out',
+                boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
             });
         });
     });
     
-    // Add hover effects to plan cards
+    // Add hover effects for plan cards
     const planCards = document.querySelectorAll('.plan-card');
     planCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
             gsap.to(card, {
-                y: -5,
-                boxShadow: '0 15px 30px rgba(172, 13, 26, 0.2)',
-                duration: 0.3
+                y: -10,
+                duration: 0.3,
+                ease: 'power2.out',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)'
             });
         });
         
         card.addEventListener('mouseleave', () => {
             gsap.to(card, {
                 y: 0,
-                boxShadow: '0 5px 30px rgba(0, 0, 0, 0.08)',
-                duration: 0.3
+                duration: 0.3,
+                ease: 'power2.out',
+                boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
             });
         });
     });
 });
 
-// Ensure all elements are visible
+// Ensure all elements are visible (fallback if animations fail)
 function ensureElementsVisible() {
-    // Make sure features section is visible
-    const featuresSection = document.getElementById('features');
-    if (featuresSection) {
-        featuresSection.style.display = 'block';
-        featuresSection.style.visibility = 'visible';
-        featuresSection.style.opacity = '1';
-    }
+    // Make hero elements visible
+    gsap.set('.hero-title .text-dark', { opacity: 1, y: 0 });
+    gsap.set('.hero-desc', { opacity: 1, y: 0 });
+    gsap.set('.cta-buttons', { opacity: 1, y: 0 });
     
-    // Make sure plans section is visible
-    const plansSection = document.getElementById('plans');
-    if (plansSection) {
-        plansSection.style.display = 'block';
-        plansSection.style.visibility = 'visible';
-        plansSection.style.opacity = '1';
-    }
+    // Make feature cards visible
+    gsap.set('.feature-card', { opacity: 1, y: 0 });
     
-    // Make sure all feature cards are visible
-    const featureCards = document.querySelectorAll('.feature-card');
-    featureCards.forEach(card => {
-        card.style.opacity = '1';
-        card.style.transform = 'none';
+    // Make plan cards visible
+    gsap.set('.plan-card', { opacity: 1, y: 0 });
+    
+    // Make demo section visible
+    gsap.set('.demo-content', { opacity: 1, y: 0 });
+    
+    // Ensure sections are visible
+    document.querySelectorAll('#features, #plans, .demo-section').forEach(section => {
+        section.style.display = 'block';
+        section.style.visibility = 'visible';
+        section.style.opacity = '1';
     });
-    
-    // Make sure all plan cards are visible
-    const planCards = document.querySelectorAll('.plan-card');
-    planCards.forEach(card => {
-        card.style.opacity = '1';
-        card.style.transform = 'none';
-    });
-    
-    // Make sure demo section is visible
-    const demoSection = document.querySelector('.demo-section');
-    if (demoSection) {
-        demoSection.style.display = 'block';
-        demoSection.style.visibility = 'visible';
-        demoSection.style.opacity = '1';
-    }
 }
 
 // Initialize all animations
 function initAnimations() {
-    try {
-        // Check if GSAP is loaded
-        if (typeof gsap === 'undefined') {
-            console.error('GSAP is not loaded');
-            return;
-        }
+    // Hero section animations
+    const heroTl = gsap.timeline({ defaults: { duration: 0.8, ease: 'power3.out' } });
+    
+    heroTl.fromTo('.hero-title .text-dark', 
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, stagger: 0.1 }
+    )
+    .fromTo('.hero-desc', 
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0 },
+        '-=0.4'
+    )
+    .fromTo('.cta-buttons', 
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0 },
+        '-=0.4'
+    );
+    
+    // Features section animations
+    if (typeof ScrollTrigger !== 'undefined') {
+        // Features section with ScrollTrigger
+        gsap.fromTo('.features .section-header', 
+            { opacity: 0, y: 30 },
+            { 
+                opacity: 1, 
+                y: 0, 
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: '.features',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                }
+            }
+        );
         
-        // Register ScrollTrigger plugin
-        if (typeof ScrollTrigger !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
-        } else {
-            console.warn('ScrollTrigger plugin not found');
-        }
+        gsap.fromTo('.feature-card', 
+            { opacity: 0, y: 30 },
+            { 
+                opacity: 1, 
+                y: 0, 
+                duration: 0.8,
+                stagger: 0.1,
+                scrollTrigger: {
+                    trigger: '.features-grid',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                }
+            }
+        );
         
-        // Hero animations - simple opacity animation
-        gsap.to('.hero-title .text-dark', {
-            opacity: 1,
-            duration: 0.8,
-            stagger: 0.15
-        });
+        // Plans section with ScrollTrigger
+        gsap.fromTo('.plans-section .section-header', 
+            { opacity: 0, y: 30 },
+            { 
+                opacity: 1, 
+                y: 0, 
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: '.plans-section',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                }
+            }
+        );
         
-        gsap.to('.hero-desc', {
-            opacity: 1,
-            duration: 0.8,
-            delay: 0.5
-        });
+        gsap.fromTo('.plan-card', 
+            { opacity: 0, y: 30 },
+            { 
+                opacity: 1, 
+                y: 0, 
+                duration: 0.8,
+                stagger: 0.1,
+                scrollTrigger: {
+                    trigger: '.plans-grid',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                }
+            }
+        );
         
-        gsap.to('.cta-buttons', {
-            opacity: 1,
-            duration: 0.8,
-            delay: 0.8
-        });
+        // Demo section with ScrollTrigger
+        gsap.fromTo('.demo-content', 
+            { opacity: 0, y: 30 },
+            { 
+                opacity: 1, 
+                y: 0, 
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: '.demo-section',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                }
+            }
+        );
+    } else {
+        // Fallback animations without ScrollTrigger
+        console.warn('Using fallback animations without ScrollTrigger');
         
-        // Simple animations for features and plans without ScrollTrigger
-        gsap.to('.feature-card', {
-            opacity: 1,
-            duration: 0.6,
-            stagger: 0.1,
-            delay: 0.2
-        });
-        
-        gsap.to('.plan-card', {
-            opacity: 1,
-            duration: 0.6,
-            stagger: 0.1,
-            delay: 0.2
-        });
-        
-        gsap.to('.demo-content', {
-            opacity: 1,
-            duration: 0.8,
-            delay: 0.2
-        });
-        
-    } catch (error) {
-        console.error('Error initializing animations:', error);
+        // Make all elements visible immediately
+        ensureElementsVisible();
     }
 }
 
 // Initialize section navigation
 function initSectionNav() {
-    const sections = ['hero', 'features', 'plans'];
-    const navItems = document.querySelectorAll('.nav-item');
+    const sections = document.querySelectorAll('section, header');
+    const navItems = document.querySelectorAll('.section-nav .nav-item');
     
     // Update active nav item based on scroll position
     function updateActiveNavItem() {
         let currentSection = '';
         
         sections.forEach(section => {
-            const sectionElement = document.getElementById(section);
-            if (sectionElement) {
-                const rect = sectionElement.getBoundingClientRect();
-                
-                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-                    currentSection = section;
-                }
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const scrollPosition = window.scrollY;
+            
+            if (scrollPosition >= sectionTop - 200 && 
+                scrollPosition < sectionTop + sectionHeight - 200) {
+                currentSection = section.id;
             }
         });
         
-        if (currentSection) {
-            navItems.forEach(item => {
-                if (item.getAttribute('data-section') === currentSection) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-        }
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('data-section') === currentSection) {
+                item.classList.add('active');
+            }
+        });
     }
     
     // Smooth scroll to section when nav item is clicked
     navItems.forEach(item => {
         item.addEventListener('click', () => {
-            const section = item.getAttribute('data-section');
-            const sectionElement = document.getElementById(section);
+            const targetSection = document.getElementById(item.getAttribute('data-section'));
             
-            if (sectionElement) {
-                try {
-                    if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
-                        gsap.to(window, {
-                            duration: 1,
-                            scrollTo: {
-                                y: sectionElement,
-                                offsetY: 80
-                            },
-                            ease: 'power3.inOut'
-                        });
-                    } else {
-                        // Fallback to standard scrolling if GSAP or ScrollToPlugin is not available
-                        sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                } catch (error) {
-                    console.error('Error scrolling to section:', error);
-                    // Fallback to standard scrolling
-                    sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (targetSection) {
+                if (typeof ScrollToPlugin !== 'undefined') {
+                    gsap.to(window, {
+                        duration: 1,
+                        scrollTo: {
+                            y: targetSection,
+                            offsetY: 80
+                        },
+                        ease: 'power3.inOut'
+                    });
+                } else {
+                    // Fallback smooth scroll
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
             }
         });
