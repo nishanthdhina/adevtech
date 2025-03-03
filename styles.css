@@ -1038,6 +1038,12 @@ body {
     border-radius: 100px;
 }
 
+@media (max-width: 1652px) {
+    .section-nav {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
     .section-nav {
         right: 20px;
@@ -1767,7 +1773,7 @@ body {
 }
 
 /* Hide mobile menu on desktop */
-@media (min-width: 769px) {
+@media (min-width: 878px) {
     .mobile-menu-toggle,
     .mobile-nav {
         display: none;
@@ -1775,7 +1781,7 @@ body {
 }
 
 /* Show mobile menu on mobile devices */
-@media (max-width: 768px) {
+@media (max-width: 877px) {
     .nav-links {
         display: none;
     }
