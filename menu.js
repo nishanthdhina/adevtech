@@ -88,17 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileMenuToggle.classList.toggle('active');
         mobileNav.classList.toggle('active');
         document.body.classList.toggle('menu-open');
-        
-        // Ensure social media icons are visible when menu is active
-        if (mobileNav.classList.contains('active')) {
-            const socialLinks = document.querySelectorAll('.mobile-social-link');
-            setTimeout(() => {
-                socialLinks.forEach((link, index) => {
-                    link.style.opacity = '1';
-                    link.style.transform = 'translateX(0)';
-                });
-            }, 300); // Small delay to ensure animation works properly
-        }
     }
     
     function closeMobileMenu() {
