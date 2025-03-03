@@ -6,46 +6,60 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize animations
     initAnimations();
+    
+    // Handle window resize events
+    window.addEventListener('resize', function() {
+        // Add any responsive behavior here
+    });
+    
+    // Example: Add click event listener for contact button
+    const contactBtn = document.querySelector('.plan-cta .btn.primary');
+    if (contactBtn) {
+        contactBtn.addEventListener('click', function(e) {
+            // Track interaction or perform other actions
+            console.log('Contact button clicked');
+        });
+    }
 });
 
 // Section Navigation
 function initSectionNav() {
-    const sections = document.querySelectorAll('section[id], header[id]');
+    const sections = ['hero', 'features', 'plans'];
     const navItems = document.querySelectorAll('.section-nav .nav-item');
     
-    // Set initial active state
-    setActiveNavItem();
-    
-    // Update active state on scroll
-    window.addEventListener('scroll', function() {
-        setActiveNavItem();
-    });
-    
-    // Smooth scroll to section when nav item is clicked
+    // Set up click handlers for navigation
     navItems.forEach(item => {
         item.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-section');
-            const targetSection = document.getElementById(targetId);
+            const targetSection = this.getAttribute('data-section');
+            const targetElement = document.getElementById(targetSection);
             
-            if (targetSection) {
-                window.scrollTo({
-                    top: targetSection.offsetTop - 80,
-                    behavior: 'smooth'
+            if (targetElement) {
+                gsap.to(window, {
+                    duration: 1,
+                    scrollTo: {
+                        y: targetElement,
+                        offsetY: 80
+                    },
+                    ease: "power2.inOut"
                 });
             }
         });
     });
     
-    function setActiveNavItem() {
+    // Update active nav item on scroll
+    window.addEventListener('scroll', function() {
         let currentSection = '';
         
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                currentSection = sectionId;
+        sections.forEach(sectionId => {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (window.pageYOffset >= (sectionTop - 200) && 
+                    window.pageYOffset < (sectionTop + sectionHeight - 200)) {
+                    currentSection = sectionId;
+                }
             }
         });
         
@@ -55,105 +69,100 @@ function initSectionNav() {
                 item.classList.add('active');
             }
         });
-    }
+    });
 }
 
 // Animations
 function initAnimations() {
-    // Hero section animations
-    gsap.from('.hero-title .text-dark', {
-        y: 50,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: 'power2.out'
-    });
+    // Register GSAP plugins
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
     
+    // Hero section animations
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+        const heroTitleSplit = new SplitText(heroTitle, { type: "words,chars" });
+        const chars = heroTitleSplit.chars;
+        
+        gsap.from(chars, {
+            duration: 0.8,
+            opacity: 0,
+            y: 20,
+            rotationX: -90,
+            stagger: 0.02,
+            ease: "back.out",
+        });
+    }
+    
+    // Animate hero description and CTA
     gsap.from('.hero-desc', {
-        y: 30,
         opacity: 0,
+        y: 30,
         duration: 0.8,
         delay: 0.5,
-        ease: 'power2.out'
+        ease: "power2.out"
     });
     
     gsap.from('.cta-buttons', {
-        y: 30,
         opacity: 0,
+        y: 30,
         duration: 0.8,
         delay: 0.7,
-        ease: 'power2.out'
+        ease: "power2.out"
     });
     
     // Features section animations
     gsap.from('.feature-card', {
         scrollTrigger: {
-            trigger: '#features',
-            start: 'top 70%'
+            trigger: '.features',
+            start: 'top 70%',
         },
         y: 50,
         opacity: 0,
-        stagger: 0.1,
         duration: 0.8,
-        ease: 'power2.out'
+        stagger: 0.2,
+        ease: "power2.out"
     });
     
     // Plans section animations
-    gsap.from('.eko-feature-card', {
+    gsap.from('.plan-card', {
         scrollTrigger: {
-            trigger: '#plans',
-            start: 'top 70%'
-        },
-        y: 50,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: 'power2.out'
-    });
-    
-    // Dashboard section animations
-    gsap.from('.dashboard-image', {
-        scrollTrigger: {
-            trigger: '#dashboard',
-            start: 'top 70%'
+            trigger: '.plans-section',
+            start: 'top 70%',
         },
         y: 50,
         opacity: 0,
         duration: 0.8,
-        ease: 'power2.out'
+        stagger: 0.2,
+        ease: "power2.out"
     });
     
-    gsap.from('.dashboard-notifications.left .notification-card', {
-        scrollTrigger: {
-            trigger: '#dashboard',
-            start: 'top 60%'
-        },
-        x: -50,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        delay: 0.3,
-        ease: 'power2.out'
+    // Section headers animation
+    gsap.utils.toArray('.section-header').forEach(header => {
+        gsap.from(header, {
+            scrollTrigger: {
+                trigger: header,
+                start: 'top 80%',
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        });
     });
     
-    gsap.from('.dashboard-notifications.right .notification-card', {
-        scrollTrigger: {
-            trigger: '#dashboard',
-            start: 'top 60%'
-        },
-        x: 50,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        delay: 0.3,
-        ease: 'power2.out'
+    // Accent text highlight animation
+    gsap.utils.toArray('.accent-text').forEach(text => {
+        gsap.from(text, {
+            scrollTrigger: {
+                trigger: text,
+                start: 'top 90%',
+            },
+            color: "#000",
+            duration: 1,
+            ease: "power2.out"
+        });
     });
 }
-
-// Handle responsive behavior
-window.addEventListener('resize', function() {
-    // Add any responsive behavior here if needed
-});
 
 // Add event listeners for interactive elements
 document.addEventListener('DOMContentLoaded', function() {

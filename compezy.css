@@ -48,12 +48,12 @@
     margin-bottom: 0.5rem;
 }
 
-/* CompEzy specific colors */
+/* CompEzy specific colors - using red instead of blue */
 :root {
-    --compezy-primary: #4A6FDC;
-    --compezy-secondary: #6A8FFC;
-    --compezy-accent: #3D5FC9;
-    --compezy-light: #EEF2FF;
+    --compezy-primary: #ac0d1a;
+    --compezy-secondary: #c85c66;
+    --compezy-accent: #8a0a15;
+    --compezy-light: #fff0f1;
 }
 
 /* Override some styles for CompEzy */
@@ -70,6 +70,18 @@
 }
 
 /* Plan cards styling */
+.plans-section {
+    background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+    padding: 100px 0;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
 .plan-card {
     background: #fff;
     border-radius: 12px;
@@ -79,6 +91,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    border-top: 4px solid var(--compezy-primary);
 }
 
 .plan-card:hover {
@@ -128,156 +141,14 @@
     margin-top: auto;
 }
 
-/* Dashboard section styling */
-.dashboard {
-    background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
-    padding: 100px 0;
-}
-
-.dashboard-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 60px;
-}
-
-.dashboard-image {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-}
-
-.dashboard-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.dashboard-notifications {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    z-index: 2;
-}
-
-.dashboard-notifications.left {
-    left: 0;
-    transform: translateX(-30%);
-}
-
-.dashboard-notifications.right {
-    right: 0;
-    transform: translateX(30%);
-}
-
-.notification-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    width: 280px;
-    transition: all 0.3s ease;
-}
-
-.notification-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.dashboard-notifications.right .notification-card:hover {
-    transform: translateY(-5px);
-}
-
-.notification-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--compezy-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.notification-content h4 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 0 0 5px 0;
-    color: var(--text-dark);
-}
-
-.notification-content p {
-    font-size: 0.9rem;
-    color: var(--text-light);
-    margin: 0;
-}
-
 /* Media queries */
-@media (max-width: 1600px) {
-    .dashboard-wrapper {
-        max-width: 1200px;
-        margin: 60px auto 0;
-    }
-}
-
-@media (max-width: 1400px) {
-    .dashboard-wrapper {
-        max-width: 1000px;
-        margin: 60px auto 0;
-    }
-}
-
-@media (max-width: 1200px) {
-    .dashboard-wrapper {
-        max-width: 800px;
-        margin: 60px auto 0;
-    }
-    
-    .dashboard-image img {
-        max-width: 100%;
-    }
-    
-    .dashboard-notifications {
-        position: relative;
-        transform: none !important;
-        margin-top: 30px;
-        flex-direction: row;
-        justify-content: center;
-        gap: 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 3rem;
-    }
-    
-    .hero-desc {
-        font-size: 1.1rem;
-    }
-    
-    .dashboard-notifications {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .dashboard-wrapper {
-        flex-direction: column;
-        gap: 30px;
-    }
-}
-
 @media (max-width: 1200px) {
     .hero-title {
         font-size: 4rem;
+    }
+    
+    .plans-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -298,6 +169,10 @@
     
     .hero-desc {
         font-size: 1rem;
+    }
+    
+    .plans-grid {
+        grid-template-columns: 1fr;
     }
 }
 
