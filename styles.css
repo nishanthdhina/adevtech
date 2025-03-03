@@ -1782,17 +1782,61 @@ body {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 100%;
+    width: 80%;
+    max-width: 400px;
     height: 100vh;
     background-color: var(--white);
     padding: 100px 2rem 2rem;
     z-index: 1000;
     overflow-y: auto;
     transition: right 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .mobile-nav.active {
     right: 0;
+}
+
+.mobile-nav-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002;
+}
+
+.mobile-nav-close::before,
+.mobile-nav-close::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-close::before {
+    transform: rotate(45deg);
+}
+
+.mobile-nav-close::after {
+    transform: rotate(-45deg);
+}
+
+.mobile-nav-close:hover::before,
+.mobile-nav-close:hover::after {
+    background-color: var(--accent);
+}
+
+body.menu-open {
+    overflow: hidden;
 }
 
 .mobile-nav-links {
