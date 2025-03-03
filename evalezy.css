@@ -17,7 +17,7 @@
     right: 0;
     width: 100%;
     height: 100%;
-    background-image: url('assets/pattern-dots.png');
+    background-image: url('assets/pattern-bg.svg');
     background-repeat: repeat;
     opacity: 0.05;
     z-index: 0;
@@ -204,18 +204,19 @@
     justify-content: center;
     background-color: var(--evalezy-light);
     border-radius: 50%;
-    margin-bottom: 1.5rem;
+    overflow: hidden;
 }
 
 .feature-icon img {
-    max-width: 64px;
-    max-height: 64px;
+    max-width: 48px;
+    max-height: 48px;
+    object-fit: contain;
 }
 
 .feature-icon lord-icon,
 .feature-icon i {
-    width: 64px !important;
-    height: 64px !important;
+    width: 48px !important;
+    height: 48px !important;
     display: flex;
     align-items: center;
     justify-content: center;
