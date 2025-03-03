@@ -200,7 +200,9 @@
 
 /* Remove conflicting navbar styles */
 .navbar .logo {
-    height: 32px;
+    height: 65px;
+    display: flex;
+    align-items: center;
 }
 
 .navbar .logo img {

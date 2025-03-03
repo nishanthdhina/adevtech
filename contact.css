@@ -1,6 +1,6 @@
 /* Remove conflicting navbar styles */
 .navbar .logo {
-    height: 32px;
+    height: 65px;
 }
 
 .navbar .logo img {
@@ -98,12 +98,6 @@
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-}
-
-.info-card:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-3px);
 }
 
 .card-content h3 {
@@ -112,10 +106,28 @@
     margin-bottom: 0.3rem;
 }
 
-.card-content p,
+.card-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
 .card-content a {
+    display: inline-block;
     color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.card-content a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.card-content p {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /* Social Connect Styles */
@@ -224,6 +236,12 @@
     font-size: 0.85rem;
     margin-top: 0.5rem;
     display: none;
+    font-weight: 500;
+}
+
+.form-group.error input {
+    border-color: #ff3b3b;
+    background: #fff9f9;
 }
 
 .form-group.error .error-message {

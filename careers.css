@@ -202,13 +202,15 @@
 
 /* Remove conflicting navbar styles */
 .navbar .logo {
-    height: 32px;
+    height: 65px;
+    display: flex;
+    align-items: center;
 }
 
 .navbar .logo a {
     display: flex;
-    height: 100%;
     align-items: center;
+    height: 100%;
 }
 
 .navbar .logo img {
