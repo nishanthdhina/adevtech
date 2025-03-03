@@ -33,48 +33,43 @@ document.addEventListener('DOMContentLoaded', () => {
         initSectionNav();
     }, 100);
     
-    // Add hover effects for feature cards
+    // Add hover effects for feature cards using GSAP
     const featureCards = document.querySelectorAll('.feature-card');
     featureCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            gsap.to(card, {
-                y: -10,
-                duration: 0.3,
-                ease: 'power2.out',
-                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)'
-            });
+        const tl = gsap.timeline({ paused: true });
+        tl.to(card, {
+            y: -10,
+            duration: 0.3,
+            ease: 'power2.out',
+            boxShadow: '0 15px 35px rgba(172, 13, 26, 0.1)',
+            borderColor: '#ac0d1a'
         });
         
-        card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-                y: 0,
-                duration: 0.3,
-                ease: 'power2.out',
-                boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
-            });
-        });
+        tl.to(card.querySelector('.feature-icon'), {
+            backgroundColor: 'rgba(172, 13, 26, 0.12)',
+            scale: 1.05,
+            duration: 0.3,
+            ease: 'power2.out'
+        }, 0);
+        
+        card.addEventListener('mouseenter', () => tl.play());
+        card.addEventListener('mouseleave', () => tl.reverse());
     });
     
-    // Add hover effects for plan cards
+    // Add hover effects for plan cards using GSAP
     const planCards = document.querySelectorAll('.plan-card');
     planCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            gsap.to(card, {
-                y: -10,
-                duration: 0.3,
-                ease: 'power2.out',
-                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)'
-            });
+        const tl = gsap.timeline({ paused: true });
+        tl.to(card, {
+            y: -10,
+            duration: 0.3,
+            ease: 'power2.out',
+            boxShadow: '0 15px 35px rgba(172, 13, 26, 0.1)',
+            borderColor: '#ac0d1a'
         });
         
-        card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-                y: 0,
-                duration: 0.3,
-                ease: 'power2.out',
-                boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
-            });
-        });
+        card.addEventListener('mouseenter', () => tl.play());
+        card.addEventListener('mouseleave', () => tl.reverse());
     });
 });
 
@@ -111,104 +106,100 @@ function ensureElementsVisible() {
 
 // Initialize all animations
 function initAnimations() {
-    // Only run animations if elements are already visible
-    // Hero section animations - subtle fade in only
-    const heroTl = gsap.timeline({ defaults: { duration: 0.8, ease: 'power3.out' } });
+    // Hero section animations with staggered text reveal
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     
-    heroTl.fromTo('.hero-title', 
-        { opacity: 0.8 },
-        { opacity: 1, duration: 0.5 }
-    )
-    .fromTo('.hero-desc', 
-        { opacity: 0.8 },
-        { opacity: 1 },
-        '-=0.3'
-    )
-    .fromTo('.cta-buttons', 
-        { opacity: 0.8 },
-        { opacity: 1 },
-        '-=0.3'
-    );
+    // Animate each word in the title separately
+    const titleElements = document.querySelectorAll('.hero-title .text-dark');
+    heroTl.from(titleElements, {
+        opacity: 0,
+        y: 30,
+        stagger: 0.15,
+        duration: 0.8
+    });
+    
+    heroTl.from('.hero-desc', {
+        opacity: 0,
+        y: 20,
+        duration: 0.8
+    }, '-=0.4');
+    
+    heroTl.from('.cta-buttons .btn', {
+        opacity: 0,
+        y: 20,
+        stagger: 0.15,
+        duration: 0.8
+    }, '-=0.6');
     
     // Features section animations
     if (typeof ScrollTrigger !== 'undefined') {
-        // Features section with ScrollTrigger - subtle animations only
-        gsap.fromTo('.features .section-header', 
-            { opacity: 0.8 },
-            { 
-                opacity: 1, 
-                duration: 0.5,
-                scrollTrigger: {
-                    trigger: '.features',
-                    start: 'top 80%',
-                    toggleActions: 'play none none none'
-                }
+        // Section headers with scroll triggers
+        gsap.from('.features .section-header', {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '.features',
+                start: 'top 80%',
+                toggleActions: 'play none none none'
             }
-        );
+        });
         
-        gsap.fromTo('.feature-card', 
-            { opacity: 0.8, y: 10 },
-            { 
-                opacity: 1, 
-                y: 0, 
-                duration: 0.5,
-                stagger: 0.1,
-                scrollTrigger: {
-                    trigger: '.features-grid',
-                    start: 'top 80%',
-                    toggleActions: 'play none none none'
-                }
+        // Feature cards with staggered animation
+        gsap.from('.feature-card', {
+            opacity: 0,
+            y: 50,
+            stagger: 0.1,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '.features-grid',
+                start: 'top 80%',
+                toggleActions: 'play none none none'
             }
-        );
+        });
         
-        // Plans section with ScrollTrigger
-        gsap.fromTo('.plans-section .section-header', 
-            { opacity: 0.8 },
-            { 
-                opacity: 1, 
-                duration: 0.5,
-                scrollTrigger: {
-                    trigger: '.plans-section',
-                    start: 'top 80%',
-                    toggleActions: 'play none none none'
-                }
+        // Plans section header
+        gsap.from('.plans-section .section-header', {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '.plans-section',
+                start: 'top 80%',
+                toggleActions: 'play none none none'
             }
-        );
+        });
         
-        gsap.fromTo('.plan-card', 
-            { opacity: 0.8, y: 10 },
-            { 
-                opacity: 1, 
-                y: 0, 
-                duration: 0.5,
-                stagger: 0.1,
-                scrollTrigger: {
-                    trigger: '.plans-grid',
-                    start: 'top 80%',
-                    toggleActions: 'play none none none'
-                }
+        // Plan cards with staggered animation
+        gsap.from('.plan-card', {
+            opacity: 0,
+            y: 50,
+            stagger: 0.1,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '.plans-grid',
+                start: 'top 80%',
+                toggleActions: 'play none none none'
             }
-        );
+        });
         
-        // Demo section with ScrollTrigger
-        gsap.fromTo('.demo-content', 
-            { opacity: 0.8 },
-            { 
-                opacity: 1, 
-                duration: 0.5,
-                scrollTrigger: {
-                    trigger: '.demo-section',
-                    start: 'top 80%',
-                    toggleActions: 'play none none none'
-                }
+        // Demo section with reveal animation
+        gsap.from('.demo-content', {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '.demo-section',
+                start: 'top 80%',
+                toggleActions: 'play none none none'
             }
-        );
+        });
     }
 }
 
 // Initialize section navigation
 function initSectionNav() {
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll('section[id], header[id]');
     const navItems = document.querySelectorAll('.section-nav .nav-item');
     
     // Update active nav item based on scroll position
@@ -263,4 +254,14 @@ function initSectionNav() {
     // Initial update and add scroll event listener
     updateActiveNavItem();
     window.addEventListener('scroll', updateActiveNavItem);
+    
+    // Make section nav visible after initialization
+    const sectionNav = document.querySelector('.section-nav');
+    if (sectionNav) {
+        gsap.to(sectionNav, {
+            opacity: 1,
+            duration: 0.5,
+            delay: 1
+        });
+    }
 } 
