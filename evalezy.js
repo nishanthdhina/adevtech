@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('mouseenter', () => {
             gsap.to(card, {
                 y: -5,
-                boxShadow: '0 15px 30px rgba(58, 123, 213, 0.2)',
+                boxShadow: '0 15px 30px rgba(172, 13, 26, 0.2)',
                 duration: 0.3
             });
         });
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('mouseenter', () => {
             gsap.to(card, {
                 y: -5,
-                boxShadow: '0 15px 30px rgba(58, 123, 213, 0.2)',
+                boxShadow: '0 15px 30px rgba(172, 13, 26, 0.2)',
                 duration: 0.3
             });
         });
@@ -128,10 +128,12 @@ function initSectionNav() {
         
         sections.forEach(section => {
             const sectionElement = document.getElementById(section);
-            const rect = sectionElement.getBoundingClientRect();
-            
-            if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-                currentSection = section;
+            if (sectionElement) {
+                const rect = sectionElement.getBoundingClientRect();
+                
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    currentSection = section;
+                }
             }
         });
         
@@ -152,14 +154,16 @@ function initSectionNav() {
             const section = item.getAttribute('data-section');
             const sectionElement = document.getElementById(section);
             
-            gsap.to(window, {
-                duration: 1,
-                scrollTo: {
-                    y: sectionElement,
-                    offsetY: 80
-                },
-                ease: 'power3.inOut'
-            });
+            if (sectionElement) {
+                gsap.to(window, {
+                    duration: 1,
+                    scrollTo: {
+                        y: sectionElement,
+                        offsetY: 80
+                    },
+                    ease: 'power3.inOut'
+                });
+            }
         });
     });
     

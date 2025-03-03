@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--evalezy-light) 0%, #fff 100%);
+    background: linear-gradient(135deg, #fff1f1 0%, #fff 100%);
     padding: 120px 0 60px;
     margin-top: 0;
     position: relative;
@@ -50,7 +50,7 @@
 }
 
 .hero-title .text-dark:last-child {
-    color: var(--evalezy-primary);
+    color: var(--primary);
 }
 
 .hero-desc {
@@ -75,56 +75,58 @@
 }
 
 .cta-buttons .btn.primary {
-    background: var(--evalezy-primary);
+    background: var(--primary);
     color: white;
-    border: 2px solid var(--evalezy-primary);
+    border: 2px solid var(--primary);
 }
 
 .cta-buttons .btn.outline {
     background: transparent;
-    color: var(--evalezy-primary);
-    border: 2px solid var(--evalezy-primary);
+    color: var(--primary);
+    border: 2px solid var(--primary);
 }
 
 .cta-buttons .btn.primary:hover {
-    background: var(--evalezy-accent);
-    border-color: var(--evalezy-accent);
+    background: var(--accent);
+    border-color: var(--accent);
 }
 
 .cta-buttons .btn.outline:hover {
-    background: var(--evalezy-primary);
+    background: var(--primary);
     color: white;
 }
 
-/* EvalEzy specific colors - using purple instead of red */
+/* EvalEzy specific colors - using AdevTech red instead of blue */
 :root {
-    --evalezy-primary: #3a7bd5;
-    --evalezy-secondary: #00d2ff;
-    --evalezy-accent: #0095ff;
-    --evalezy-light: #e6f7ff;
-    --evalezy-dark: #1a3a5f;
-    --evalezy-gradient: linear-gradient(135deg, var(--evalezy-primary) 0%, var(--evalezy-secondary) 100%);
-    --evalezy-shadow: 0 10px 30px rgba(58, 123, 213, 0.2);
+    --evalezy-primary: var(--primary);
+    --evalezy-secondary: var(--accent);
+    --evalezy-accent: var(--secondary);
+    --evalezy-light: #fff1f1;
+    --evalezy-dark: var(--primary-dark);
+    --evalezy-gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    --evalezy-shadow: 0 10px 30px rgba(172, 13, 26, 0.2);
 }
 
 /* Override some styles for EvalEzy */
 #features .accent-text {
-    color: var(--evalezy-primary);
+    color: var(--primary);
     font-weight: 600;
 }
 
 .feature-card:hover {
-    border-color: var(--evalezy-primary);
+    border-color: var(--primary);
 }
 
 .feature-icon lord-icon {
-    color: var(--evalezy-primary);
+    color: var(--primary);
 }
 
 /* Features Section */
 .features {
     padding: 120px 0;
     background: white;
+    position: relative;
+    z-index: 1;
 }
 
 .section-header {
@@ -165,7 +167,7 @@
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
-    border: 1px solid rgba(94, 23, 235, 0.1);
+    border: 1px solid rgba(172, 13, 26, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -174,7 +176,7 @@
 
 .feature-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(94, 23, 235, 0.1);
+    box-shadow: 0 15px 35px rgba(172, 13, 26, 0.1);
 }
 
 .feature-icon {
@@ -221,6 +223,7 @@
     padding: 120px 0;
     background-color: var(--evalezy-light);
     position: relative;
+    z-index: 1;
 }
 
 .plans-grid {
@@ -238,12 +241,12 @@
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    border-top: 4px solid var(--evalezy-primary);
+    border-top: 4px solid var(--primary);
 }
 
 .plan-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(94, 23, 235, 0.1);
+    box-shadow: 0 15px 35px rgba(172, 13, 26, 0.1);
 }
 
 .plan-header {
@@ -262,7 +265,7 @@
 
 .plan-price {
     font-size: 1.1rem;
-    color: var(--evalezy-primary);
+    color: var(--primary);
     font-weight: 600;
 }
 
@@ -281,7 +284,7 @@
 }
 
 .plan-features li i {
-    color: var(--evalezy-primary);
+    color: var(--primary);
     font-size: 1rem;
     margin-top: 0.25rem;
 }
@@ -303,24 +306,24 @@
 }
 
 .plan-cta .btn.primary {
-    background: var(--evalezy-primary);
+    background: var(--primary);
     color: white;
-    border: 2px solid var(--evalezy-primary);
+    border: 2px solid var(--primary);
 }
 
 .plan-cta .btn.outline {
     background: transparent;
-    color: var(--evalezy-primary);
-    border: 2px solid var(--evalezy-primary);
+    color: var(--primary);
+    border: 2px solid var(--primary);
 }
 
 .plan-cta .btn.primary:hover {
-    background: var(--evalezy-accent);
-    border-color: var(--evalezy-accent);
+    background: var(--accent);
+    border-color: var(--accent);
 }
 
 .plan-cta .btn.outline:hover {
-    background: var(--evalezy-primary);
+    background: var(--primary);
     color: white;
 }
 
@@ -351,7 +354,7 @@
 /* Demo request section */
 .demo-section {
     padding: 80px 0;
-    background: linear-gradient(135deg, var(--evalezy-primary) 0%, var(--evalezy-accent) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     color: white;
     text-align: center;
 }
@@ -375,7 +378,7 @@
 .demo-btn {
     display: inline-block;
     background: white;
-    color: var(--evalezy-primary);
+    color: var(--primary);
     padding: 1rem 2rem;
     border-radius: 50px;
     font-weight: 600;
