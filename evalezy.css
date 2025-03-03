@@ -28,6 +28,8 @@
     margin: 0 auto;
     text-align: center;
     padding: 0 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-text {
@@ -47,6 +49,8 @@
 .hero-title .text-dark {
     display: block;
     color: var(--text-dark);
+    opacity: 1;
+    transform: none;
 }
 
 .hero-title .text-dark:last-child {
@@ -59,6 +63,8 @@
     max-width: 700px;
     margin: 0 auto;
     line-height: 1.6;
+    opacity: 1;
+    transform: none;
 }
 
 .cta-buttons {
@@ -66,6 +72,8 @@
     gap: 1rem;
     justify-content: center;
     margin-top: 1rem;
+    opacity: 1;
+    transform: none;
 }
 
 .cta-buttons .btn {
@@ -126,12 +134,16 @@
     padding: 120px 0;
     background: white;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    display: block;
+    visibility: visible;
 }
 
 .section-header {
     text-align: center;
     margin-bottom: 4rem;
+    opacity: 1;
+    transform: none;
 }
 
 .section-header h2 {
@@ -153,6 +165,8 @@
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
+    opacity: 1;
+    transform: none;
 }
 
 @media (min-width: 992px) {
@@ -172,6 +186,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    opacity: 1;
+    transform: none;
 }
 
 .feature-card:hover {
@@ -223,7 +239,9 @@
     padding: 120px 0;
     background-color: var(--evalezy-light);
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    display: block;
+    visibility: visible;
 }
 
 .plans-grid {
@@ -231,6 +249,8 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 4rem;
+    opacity: 1;
+    transform: none;
 }
 
 .plan-card {
@@ -242,6 +262,8 @@
     display: flex;
     flex-direction: column;
     border-top: 4px solid var(--primary);
+    opacity: 1;
+    transform: none;
 }
 
 .plan-card:hover {
@@ -327,41 +349,29 @@
     color: white;
 }
 
-.fade-up {
-    opacity: 0;
-    transform: translateY(20px);
+/* Remove animation classes that might be hiding elements */
+.fade-up, .fade-in, .slide-in-left, .slide-in-right, .scale-in {
+    opacity: 1 !important;
+    transform: none !important;
 }
 
-.fade-in {
-    opacity: 0;
-}
-
-.slide-in-left {
-    opacity: 0;
-    transform: translateX(-50px);
-}
-
-.slide-in-right {
-    opacity: 0;
-    transform: translateX(50px);
-}
-
-.scale-in {
-    opacity: 0;
-    transform: scale(0.9);
-}
-
-/* Demo request section */
+/* Demo section */
 .demo-section {
     padding: 80px 0;
     background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     color: white;
     text-align: center;
+    position: relative;
+    z-index: 2;
+    display: block;
+    visibility: visible;
 }
 
 .demo-content {
     max-width: 800px;
     margin: 0 auto;
+    opacity: 1;
+    transform: none;
 }
 
 .demo-content h2 {

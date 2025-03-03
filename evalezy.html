@@ -22,6 +22,12 @@
     
     <title>EvalEzy - Advanced Employee Evaluation Software | AdevTech</title>
     
+    <!-- Load GSAP first -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="evalezy.css">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
@@ -84,6 +90,20 @@
         }
     }
     </script>
+    
+    <style>
+        /* Ensure features and plans are visible */
+        #features, #plans, .demo-section {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .feature-card, .plan-card, .demo-content {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Same navbar as main page -->
@@ -528,10 +548,7 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    <!-- Load our scripts after the DOM is ready -->
     <script src="animations.js"></script>
     <script src="evalezy.js"></script>
     <script src="menu.js"></script>

@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Make sure all elements are visible first
+    ensureElementsVisible();
+    
+    // Initialize animations and navigation
     initAnimations();
     initSectionNav();
     
@@ -43,81 +47,109 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function initAnimations() {
-    // Hero animations
-    const heroTitle = document.querySelectorAll('.hero-title .text-dark');
-    const heroDesc = document.querySelector('.hero-desc');
-    const ctaButtons = document.querySelector('.cta-buttons');
+// Ensure all elements are visible
+function ensureElementsVisible() {
+    // Make sure features section is visible
+    const featuresSection = document.getElementById('features');
+    if (featuresSection) {
+        featuresSection.style.display = 'block';
+        featuresSection.style.visibility = 'visible';
+        featuresSection.style.opacity = '1';
+    }
     
-    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    // Make sure plans section is visible
+    const plansSection = document.getElementById('plans');
+    if (plansSection) {
+        plansSection.style.display = 'block';
+        plansSection.style.visibility = 'visible';
+        plansSection.style.opacity = '1';
+    }
     
-    heroTl.to(heroTitle, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.15
-    })
-    .to(heroDesc, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8
-    }, '-=0.4')
-    .to(ctaButtons, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8
-    }, '-=0.4');
-    
-    // Features section animations
-    gsap.registerPlugin(ScrollTrigger);
-    
+    // Make sure all feature cards are visible
     const featureCards = document.querySelectorAll('.feature-card');
-    
-    gsap.from(featureCards, {
-        opacity: 0,
-        y: 30,
-        stagger: 0.1,
-        duration: 0.6,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: '.features',
-            start: 'top 70%',
-            toggleActions: 'play none none none'
-        }
+    featureCards.forEach(card => {
+        card.style.opacity = '1';
+        card.style.transform = 'none';
     });
     
-    // Plans section animations
+    // Make sure all plan cards are visible
     const planCards = document.querySelectorAll('.plan-card');
-    
-    gsap.from(planCards, {
-        opacity: 0,
-        y: 30,
-        stagger: 0.1,
-        duration: 0.6,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: '.plans-section',
-            start: 'top 70%',
-            toggleActions: 'play none none none'
-        }
+    planCards.forEach(card => {
+        card.style.opacity = '1';
+        card.style.transform = 'none';
     });
     
-    // Demo section animations
-    const demoContent = document.querySelector('.demo-content');
-    
-    gsap.from(demoContent, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: '.demo-section',
-            start: 'top 70%',
-            toggleActions: 'play none none none'
-        }
-    });
+    // Make sure demo section is visible
+    const demoSection = document.querySelector('.demo-section');
+    if (demoSection) {
+        demoSection.style.display = 'block';
+        demoSection.style.visibility = 'visible';
+        demoSection.style.opacity = '1';
+    }
 }
 
+// Initialize all animations
+function initAnimations() {
+    try {
+        // Check if GSAP is loaded
+        if (typeof gsap === 'undefined') {
+            console.error('GSAP is not loaded');
+            return;
+        }
+        
+        // Register ScrollTrigger plugin
+        if (typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+        } else {
+            console.warn('ScrollTrigger plugin not found');
+        }
+        
+        // Hero animations - simple opacity animation
+        gsap.to('.hero-title .text-dark', {
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.15
+        });
+        
+        gsap.to('.hero-desc', {
+            opacity: 1,
+            duration: 0.8,
+            delay: 0.5
+        });
+        
+        gsap.to('.cta-buttons', {
+            opacity: 1,
+            duration: 0.8,
+            delay: 0.8
+        });
+        
+        // Simple animations for features and plans without ScrollTrigger
+        gsap.to('.feature-card', {
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            delay: 0.2
+        });
+        
+        gsap.to('.plan-card', {
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            delay: 0.2
+        });
+        
+        gsap.to('.demo-content', {
+            opacity: 1,
+            duration: 0.8,
+            delay: 0.2
+        });
+        
+    } catch (error) {
+        console.error('Error initializing animations:', error);
+    }
+}
+
+// Initialize section navigation
 function initSectionNav() {
     const sections = ['hero', 'features', 'plans'];
     const navItems = document.querySelectorAll('.nav-item');
@@ -155,14 +187,25 @@ function initSectionNav() {
             const sectionElement = document.getElementById(section);
             
             if (sectionElement) {
-                gsap.to(window, {
-                    duration: 1,
-                    scrollTo: {
-                        y: sectionElement,
-                        offsetY: 80
-                    },
-                    ease: 'power3.inOut'
-                });
+                try {
+                    if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
+                        gsap.to(window, {
+                            duration: 1,
+                            scrollTo: {
+                                y: sectionElement,
+                                offsetY: 80
+                            },
+                            ease: 'power3.inOut'
+                        });
+                    } else {
+                        // Fallback to standard scrolling if GSAP or ScrollToPlugin is not available
+                        sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                } catch (error) {
+                    console.error('Error scrolling to section:', error);
+                    // Fallback to standard scrolling
+                    sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
         });
     });
