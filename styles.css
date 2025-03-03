@@ -51,7 +51,7 @@ body {
 }
 
 .navbar .logo {
-    height: 50px;
+    height: 65px;
     display: flex;
     align-items: center;
 }
@@ -59,7 +59,7 @@ body {
 .navbar .logo img {
     height: 100%;
     width: auto;
-    max-height: 50px;
+    max-height: 55px;
     object-fit: contain;
 }
 
