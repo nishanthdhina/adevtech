@@ -140,22 +140,18 @@
 .social-links {
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 2rem;
-    margin: 0 auto;
-    max-width: 600px;
 }
 
 .social-link {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 1rem;
+    gap: 1rem;
+    padding: 1.5rem;
     border-radius: 12px;
     transition: all 0.3s ease;
-    width: 100px;
+    min-width: 120px;
     text-decoration: none;
 }
 
@@ -215,4 +211,42 @@
     object-fit: contain;
 }
 
-/* Rest of blog styles */ 
+/* Rest of blog styles */
+
+/* Fix for footer social links */
+.footer .social-links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-direction: row;
+}
+
+.footer .social-link {
+    min-width: auto;
+    padding: 0;
+}
+
+.footer .social-links a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+    min-width: auto;
+    flex-direction: row;
+}
+
+.footer .social-links a:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+    .footer .social-links {
+        flex-direction: row;
+    }
+} 
