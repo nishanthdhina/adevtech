@@ -713,8 +713,7 @@ body {
     }
 
     .animation-container {
-        min-height: 450px;
-        max-width: 450px;
+        display: none;
     }
 }
 
