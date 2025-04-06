@@ -114,8 +114,64 @@
     border-color: var(--compezy-primary);
 }
 
+.feature-icon {
+    margin-bottom: 1.5rem;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--compezy-light);
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+}
+
+.feature-icon lord-icon,
+.feature-icon i {
+    width: 64px !important;
+    height: 64px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Fix for lord-icon positioning */
 .feature-icon lord-icon {
-    color: var(--compezy-primary);
+    transform: scale(0.9);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 0;
+    top: 0;
+    display: block !important;
+}
+
+/* Specific fix for manager self-service icon */
+.feature-card:nth-child(3) .feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.feature-card:nth-child(3) .feature-icon lord-icon {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: auto;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.feature-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
 }
 
 /* Features Section */
@@ -172,40 +228,6 @@
 .feature-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 35px rgba(172, 13, 26, 0.1);
-}
-
-.feature-icon {
-    margin-bottom: 1.5rem;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--compezy-light);
-    border-radius: 50%;
-    margin-bottom: 1.5rem;
-}
-
-.feature-icon lord-icon,
-.feature-icon i {
-    width: 64px !important;
-    height: 64px !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.feature-card h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--text-dark);
-}
-
-.feature-card p {
-    color: var(--text-light);
-    line-height: 1.6;
-    margin: 0;
 }
 
 /* Plan cards styling */
